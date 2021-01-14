@@ -4,6 +4,14 @@
 * {
   padding: .2em;
   margin: .2em;
+  width: fit-content;
+}
+body {
+  height: 98vh;
+  width: 95vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: space-evenly;
 }
 
 
