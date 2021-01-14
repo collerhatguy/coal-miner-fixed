@@ -27,6 +27,17 @@ function App() {
   // useEffect(currency.save(money), [money]);
   // useEffect(miner.saveAmount(ownedMiners), [ownedMiners]);
   // useEffect(drill.saveAmount(ownedDrills), [ownedDrills]);
+  // create variables for progress
+  const minersProgress = document.getElementById("minersProgress")
+  const drillsProgress = document.getElementById("drillsProgress")
+  // useEffect(() => {
+    // I haven't decided what this formula should look like
+  //   minersProgress.width = `${miners.speed} px` 
+  // }, [])
+  // useEffect(() => {
+  //   drillsProgress.width = `${drills.speed} px` 
+  // }, [])
+
   const saveVariables = () => {
     miner.saveAmount(ownedMiners);
     drill.saveAmount(ownedDrills);
@@ -96,7 +107,7 @@ function App() {
     // remove the upgrade button
     document.getElementById("drillSpeedUpgradeButton").remove();
   };
-  // add to moey based on bult in speeds
+  // add to money based on built in speeds
   setInterval(miningMiners, miner.speed);
   setInterval(miningDrills, drill.speed);
   return (
@@ -105,7 +116,9 @@ function App() {
       <div id="display">
         <h2>Money: {money}</h2>
         <h2>Miners: {ownedMiners}</h2>
+        <div id="minersProgress"></div>
         <h2>Drills: {ownedDrills}</h2>
+        <div id="drillsProgress"></div>
       </div>
       <div id="buyContainer">
         <h2>Buy here:</h2>

@@ -1,7 +1,7 @@
 {
   "name": "coal-miner-fixed",
   "version": "0.1.0",
-  "homepage": "http://collerhatguy.github.io/coal-miner-fixed",
+  "homepage": "http://collerhatguy.github.io/coal-miner-fixed/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
