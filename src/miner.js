@@ -5,7 +5,7 @@ export const miner = {
     speedUpgradeRate: 100,
     OWNED_LOCAL_STORAGE_KEY: "Coalminer.ownedMiners",
     UPGRADE_CAP_LOCAL_STORAGE_KEY: "Coalminer.minerCapLimit",
-    // speedUpgradeCap: localStorage.getItem(this.UPGRADE_CAP_LOCAL_STORAGE_KEY) || false,
+    CURRENT_SPEED_LOCAL_STORAGE_KEY: "Coalminer.minerCurrentSpeed",
     saveAmount: (ownedDrills) => {
       localStorage.setItem(
         "Coalminer.ownedMiners",

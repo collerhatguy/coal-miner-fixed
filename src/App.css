@@ -1,4 +1,6 @@
 :root {
+  --primary-color: brown;
+  --secondary-color: black;
   --max-font: 3rem;
 }
 * {
@@ -12,6 +14,8 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: space-around;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
 }
 h1 {
   font-size: var(--max-font);

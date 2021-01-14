@@ -17,7 +17,7 @@ function App() {
   ); 
   // set multiplier to one
   const [multiplier, setMultiplier] = useState(1);
-  // chack if we hit the max limit for our upgrades
+  // check if we hit the max limit for our upgrades
   // if (JSON.parse(localStorage.getItem(miner.UPGRADE_CAP_LOCAL_STORAGE_KEY)) = true) { 
   //   document.getElementById("minerSpeedUpgradeButton").remove();
   // }
@@ -61,23 +61,42 @@ function App() {
     setMoney((prevMoney) => prevMoney + ownedDrills * 10);
   };
   const upgradeMinerSpeed = () => {
+    // check if we have enough money
     if (!(money >= miner.speedUpgradeCost)) return;
+    // subtract cost from money 
     setMoney(money - miner.speedUpgradeCost);
+    // apply upgrade based on built in rate
     miner.speed = miner.speed - miner.speedUpgradeRate;
+    // increase cost of upgrade
     miner.speedUpgradeCost += miner.speedUpgradeCost;
+    // save our current speed
+    localStorage.setItem(miner.CURRENT_SPEED_LOCAL_STORAGE_KEY, JSON.stringify(miner.speed));
+    // check if we have hit the upgrade limit
     if (!(miner.speed - miner.speedUpgradeRate <= 0)) return;
+    // if we have than save that
     localStorage.setItem(miner.UPGRADE_CAP_LOCAL_STORAGE_KEY, JSON.stringify(true))
+    // remove the upgrade button
     document.getElementById("minerSpeedUpgradeButton").remove();
   };
   const upgradeDrillSpeed = () => {
+    // check if we have enough money
     if (!(money >= drill.speedUpgradeCost)) return;
+    // subtract cost from money 
     setMoney(money - drill.speedUpgradeCost);
+    // apply upgrade based on built in rate
     drill.speed = drill.speed - drill.speedUpgradeRate;
+    // increase cost of upgrade
     drill.speedUpgradeCost += drill.speedUpgradeCost;
+    // save our current speed
+    localStorage.setItem(drill.CURRENT_SPEED_LOCAL_STORAGE_KEY, JSON.stringify(drill.speed));
+    // check if we have hit the upgrade limit
     if (!(drill.speed - drill.speedUpgradeRate <= 0)) return;
+    // if we have than save that
     localStorage.setItem(drill.UPGRADE_CAP_LOCAL_STORAGE_KEY, JSON.stringify(true))
+    // remove the upgrade button
     document.getElementById("drillSpeedUpgradeButton").remove();
   };
+  // add to moey based on bult in speeds
   setInterval(miningMiners, miner.speed);
   setInterval(miningDrills, drill.speed);
   return (
@@ -91,19 +110,19 @@ function App() {
       <div id="buyContainer">
         <h2>Buy here:</h2>
         <button onClick={buyMiner}>
-          Miner ({miner.cost * multiplier}M)
+          Miner ({miner.cost * multiplier}$)
         </button>
         <button onClick={buyDrill}>
-          Drill ({drill.cost * multiplier}M)
+          Drill ({drill.cost * multiplier}$)
         </button>
       </div>
       <div id="upgradeContainer">
         <h2>Upgrade here:</h2>
         <button id="minerSpeedUpgradeButton" onClick={upgradeMinerSpeed}>
-          Miner Speed (5,000M)
+          Miner Speed ({miner.speedUpgradeCost}$)
         </button>
         <button id="drillSpeedUpgradeButton" onClick={upgradeDrillSpeed}>
-          Drill Speed (50,000M)
+          Drill Speed ({drill.speedUpgradeCost}$)
         </button>
       </div>
       <div id="multiplierContainer">
