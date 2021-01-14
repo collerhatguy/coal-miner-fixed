@@ -27,6 +27,12 @@ function App() {
   // useEffect(currency.save(money), [money]);
   // useEffect(miner.saveAmount(ownedMiners), [ownedMiners]);
   // useEffect(drill.saveAmount(ownedDrills), [ownedDrills]);
+  const saveVariables = () => {
+    miner.saveAmount(ownedMiners);
+    drill.saveAmount(ownedDrills);
+    currency.save(money);
+    alert("Stats Saved");
+  }
   const setMultiplier1 = () => {
     setMultiplier(1);
   };
@@ -83,19 +89,21 @@ function App() {
         <h2>Drills: {ownedDrills}</h2>
       </div>
       <div id="buyContainer">
+        <h2>Buy here:</h2>
         <button onClick={buyMiner}>
-          Buy Miner ({miner.cost * multiplier}M)
+          Miner ({miner.cost * multiplier}M)
         </button>
         <button onClick={buyDrill}>
-          Buy Drill ({drill.cost * multiplier}M)
+          Drill ({drill.cost * multiplier}M)
         </button>
       </div>
       <div id="upgradeContainer">
-        <button id="minerSpeedUpgradeButtpn" onClick={upgradeMinerSpeed}>
-          Upgrade Miner Speed (5,000M)
+        <h2>Upgrade here:</h2>
+        <button id="minerSpeedUpgradeButton" onClick={upgradeMinerSpeed}>
+          Miner Speed (5,000M)
         </button>
-        <button id="drillSpeedUpgradeButtpn" onClick={upgradeDrillSpeed}>
-          Upgrade Drill Speed (50,000M)
+        <button id="drillSpeedUpgradeButton" onClick={upgradeDrillSpeed}>
+          Drill Speed (50,000M)
         </button>
       </div>
       <div id="multiplierContainer">
@@ -126,6 +134,9 @@ function App() {
             onClick={setMultiplier100}
           ></input>
         </fieldset>
+        <button id="saveButton" onClick={saveVariables}>
+          Save
+        </button>
       </div>
     </>
   );
