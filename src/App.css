@@ -1,0 +1,23 @@
+:root {
+
+}
+* {
+  padding: .2em;
+  margin: .2em;
+}
+
+
+/* 
+#display,
+#upgradeContainer {
+  display: flex;
+  justify-content: center;
+  height: 30vh;
+}
+h1, h2 {
+  display: block;
+}
+button {
+  margin-top: 10px;
+  padding: 1em;
+} */
