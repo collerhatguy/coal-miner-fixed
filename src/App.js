@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { currency, Item } from "./misc";
 import MultiplierContainer from "./components/MultiplierContainer";
 import UpgradeContainer from "./components/UpgradeContainer";
@@ -10,6 +10,7 @@ function App() {
   // create the items w/ the clss function
   const Miners = new Item(10, 10000, 5000, 100, 1, "Miners");
   const Drills = new Item(1000, 1000, 100000, 300, 10, "Drills");
+  
 
   // set everything back to default values based on local save
   const [money, setMoney] = useState(
@@ -53,10 +54,12 @@ function App() {
   const miningItem = (Item) => {
     setMoney((prevMoney) => prevMoney + (Item.owned * Item.productionRate));
   };
-
+  debugger;
   // add to money based on built in speeds
-  setInterval(miningItem(Miners), Miners.speed);
-  setInterval(miningItem(Drills), Drills.speed);
+  useEffect(() => {
+    setInterval(miningItem(Miners), Miners.speed);
+    setInterval(miningItem(Drills), Drills.speed);
+  }, []);
   return (
     <>
       <h1>Coal Miners</h1>
