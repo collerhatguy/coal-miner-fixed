@@ -6,8 +6,6 @@ export default function UpgradeContainer({
     Miners,
     Drills 
     }) {
-    const minerUpgradeBtn = document.getElementById("minerSpeedUpgradeButton");
-    const drillUpgradeBtn = document.getElementById("drillSpeedUpgradeButton");
     return (
         <div id="upgradeContainer">
             <h2>Upgrade here:</h2>

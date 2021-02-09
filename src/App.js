@@ -73,7 +73,7 @@ function App() {
           Drills ({Drills.cost * multiplier}$)
         </button>
       </div>
-      <UpgradeContainer data={
+      <UpgradeContainer props={
         upgradeSpeed, 
         Miners,
         Drills
