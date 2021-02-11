@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { miner } from "./miner";
-import { drill } from "./drill";
-import { currency } from "./misc";
+import React, { useState } from "react";
+
+import { currency, Worker } from "./misc";
 import "./App.css";
 
 function App() {
@@ -9,34 +8,18 @@ function App() {
   const [money, setMoney] = useState(
     JSON.parse(localStorage.getItem(currency.OWNED_LOCAL_STORAGE_KEY)) || 10
   );
-  const [ownedMiners, setOwnedMiners] = useState(
-    JSON.parse(localStorage.getItem(miner.OWNED_LOCAL_STORAGE_KEY)) || 0
-  );
-  const [ownedDrills, setOwnedDrills] = useState(
-    JSON.parse(localStorage.getItem(drill.OWNED_LOCAL_STORAGE_KEY)) || 0
-  ); 
+
+  const miners = new Worker(10, 1, 100, "Miner")
+  const drills= new Worker(10, 1, 100, "Drill")
+
+  // const [ownedMiners, setOwnedMiners] = useState(
+  //   JSON.parse(localStorage.getItem(miner.OWNED_LOCAL_STORAGE_KEY)) || 0
+  // );
+  // const [ownedDrills, setOwnedDrills] = useState(
+  //   JSON.parse(localStorage.getItem(drill.OWNED_LOCAL_STORAGE_KEY)) || 0
+  // ); 
   // set multiplier to one
   const [multiplier, setMultiplier] = useState(1);
-  // check if we hit the max limit for our upgrades
-  // if (JSON.parse(localStorage.getItem(miner.UPGRADE_CAP_LOCAL_STORAGE_KEY)) = true) { 
-  //   document.getElementById("minerSpeedUpgradeButton").remove();
-  // }
-  // if (JSON.parse(localStorage.getItem(drill.UPGRADE_CAP_LOCAL_STORAGE_KEY)) = true) { 
-  //   document.getElementById("drillSpeedUpgradeButton").remove();
-  // }
-  // useEffect(currency.save(money), [money]);
-  // useEffect(miner.saveAmount(ownedMiners), [ownedMiners]);
-  // useEffect(drill.saveAmount(ownedDrills), [ownedDrills]);
-  // create variables for progress
-  const minersProgress = document.getElementById("minersProgress")
-  const drillsProgress = document.getElementById("drillsProgress")
-  // useEffect(() => {
-    // I haven't decided what this formula should look like
-  //   minersProgress.width = `${miners.speed} px` 
-  // }, [])
-  // useEffect(() => {
-  //   drillsProgress.width = `${drills.speed} px` 
-  // }, [])
 
   const saveVariables = () => {
     miner.saveAmount(ownedMiners);
