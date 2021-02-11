@@ -10,7 +10,7 @@ function App() {
   );
 
   const miners = new Worker(10, 1, 100, "Miner")
-  const drills= new Worker(10, 1, 100, "Drill")
+  const drills = new Worker(100, 5, 1000, "Drill")
 
   // const [ownedMiners, setOwnedMiners] = useState(
   //   JSON.parse(localStorage.getItem(miner.OWNED_LOCAL_STORAGE_KEY)) || 0
@@ -22,8 +22,7 @@ function App() {
   const [multiplier, setMultiplier] = useState(1);
 
   const saveVariables = () => {
-    miner.saveAmount(ownedMiners);
-    drill.saveAmount(ownedDrills);
+    // create method for saving Worker stats
     currency.save(money);
     alert("Stats Saved");
   }
@@ -36,24 +35,18 @@ function App() {
   const setMultiplier100 = () => {
     setMultiplier(100);
   };
-  const buyMiner = () => {
-    if (money < miner.cost * multiplier) return;
-    setMoney(money - miner.cost * multiplier);
-    setOwnedMiners(ownedMiners + multiplier);
-    miner.cost += multiplier;
+  // I would like to set this as a method for worker in the future
+  const buyWorker = (worker) => {
+    const totalCost = worker.state.cost * multiplier;
+    if (money < totalCost) return;
+    setMoney(money - totalCost);
+    worker.setOwned(prevOwned => {prevOwned += multiplier});
+    worker.setCost(prevCost => {prevCost += multiplier});
   };
-  const buyDrill = () => {
-    if (money < drill.cost * multiplier) return;
-    setMoney(money - drill.cost * multiplier);
-    setOwnedDrills(ownedDrills + multiplier);
-    drill.cost += multiplier;
+  const miningWorker = (worker) => {
+    setMoney((prevMoney) => prevMoney + worker.state.owned * worker.state.productionRate);
   };
-  const miningMiners = () => {
-    setMoney((prevMoney) => prevMoney + ownedMiners);
-  };
-  const miningDrills = () => {
-    setMoney((prevMoney) => prevMoney + ownedDrills * 10);
-  };
+  
   const upgradeMinerSpeed = () => {
     // check if we have enough money
     if (!(money >= miner.speedUpgradeCost)) return;
@@ -105,10 +98,10 @@ function App() {
       </div>
       <div id="buyContainer">
         <h2>Buy here:</h2>
-        <button onClick={buyMiner}>
+        <button onClick={() => {buyWorker(miners)}}>
           Miner ({miner.cost * multiplier}$)
         </button>
-        <button onClick={buyDrill}>
+        <button onClick={() => {buyWorker(drills)}}>
           Drill ({drill.cost * multiplier}$)
         </button>
       </div>
