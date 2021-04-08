@@ -1,5 +1,4 @@
 
-
 class Worker {
   constructor(
     defaultCost,
@@ -7,10 +6,10 @@ class Worker {
     defaultProductionRateUpgradeCost, 
     name
     ) {
-      this.owned = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || 0,
-      this.cost = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || defaultCost,
-      this.productionRate = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || defaultProductionRate,
-      this.productionRateUpgradeCost = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || defaultProductionRateUpgradeCost,
+      this.owned = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || 0;
+      this.cost = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || defaultCost;
+      this.productionRate = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || defaultProductionRate;
+      this.productionRateUpgradeCost = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || defaultProductionRateUpgradeCost;
   
       // storage keys
       this.OWNED_LOCAL_STORAGE_KEY = `Coalminer.${name}Owned`;

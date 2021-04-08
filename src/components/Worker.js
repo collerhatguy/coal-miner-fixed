@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Worker() {
+export default function Worker({worker, money, setMoney, multiplier}) {
     const buyWorker = (worker) => {
         const totalCost = worker.cost * multiplier;
         if (money < totalCost) return;
