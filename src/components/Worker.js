@@ -1,17 +1,22 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 export default function Worker({worker, money, setMoney, multiplier}) {
-    console.log(worker);
     const buyWorker = (worker) => {
+        // check if there is enough money
         const totalCost = worker.cost * multiplier;
         if (money < totalCost) return;
+        // if there is subtract from funds
         setMoney(money - totalCost);
-        worker.setOwned(prevOwned => {prevOwned += multiplier});
-        worker.setCost(prevCost => {prevCost += multiplier});
+        // adjust the stats accoringly
+        worker.setOwned(worker.owned + multiplier);
+        worker.setCost(worker.cost + multiplier);
     };
     const miningWorker = (worker) => {
-        setMoney((prevMoney) => prevMoney + worker.owned * worker.productionRate);
+        setMoney(prevMoney => prevMoney + worker.owned * worker.productionRate);
     };
+    useEffect(() => {
+        setInterval(() => miningWorker(worker), 10000)
+    })
     const upgradeWorkerSpeed = (worker) => {
         // check if we have enough money
         if (!(money >= worker.speedUpgradeCost)) return;
@@ -33,7 +38,7 @@ export default function Worker({worker, money, setMoney, multiplier}) {
             <h2>{worker.name}</h2>
             <h2>Owned: {worker.owned}</h2>
             <h2>Cost: {worker.cost * multiplier}</h2>
-            <button>Buy {multiplier}?</button>
+            <button onClick={() => buyWorker(worker)}>Buy {multiplier}?</button>
         </div>
     )
 }

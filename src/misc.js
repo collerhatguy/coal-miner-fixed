@@ -38,6 +38,6 @@ class Worker {
 }
 
 const miners = new Worker(10, 1, 100, "Miner")
-const drills = new Worker(100, 5, 1000, "Drill")
+const drills = new Worker(100, 2, 1000, "Drill")
 const Workers = [miners, drills]
 export default Workers;
