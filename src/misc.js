@@ -6,18 +6,20 @@ class Worker {
     defaultProductionRateUpgradeCost, 
     name
     ) {
-      this.name = name;
-      this.owned = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || 0;
-      this.cost = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || defaultCost;
-      this.productionRate = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || defaultProductionRate;
-      this.productionRateUpgradeCost = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || defaultProductionRateUpgradeCost;
-  
+        
       // storage keys
       this.OWNED_LOCAL_STORAGE_KEY = `Coalminer.${name}Owned`;
       this.COST_LOCAL_STORAGE_KEY = `Coalminer.${name}Cost`;
       this.UPGRADE_CAP_LOCAL_STORAGE_KEY = `Coalminer.${name}CapLimit`;
       this.CURRENT_PRODUCTION_RATE_LOCAL_STORAGE_KEY = `Coalminer.${name}CurrentProductionRate`;
       this.CURRENT_PRODUCTION_RATE_UPGRADE_COST_LOCAL_STORAGE_KEY = `Coalminer.${name}CurrentProductionRateUpgradeCost`;
+      
+      this.name = name;
+      this.owned = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || 0;
+      this.cost = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || defaultCost;
+      this.productionRate = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || defaultProductionRate;
+      this.productionRateUpgradeCost = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || defaultProductionRateUpgradeCost;
+
     }
     // for changing how much is owned
     setOwned(newOwned) {
