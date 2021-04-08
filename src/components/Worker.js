@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function Worker({worker, money, setMoney, multiplier}) {
+    console.log(worker);
     const buyWorker = (worker) => {
         const totalCost = worker.cost * multiplier;
         if (money < totalCost) return;
@@ -28,8 +29,11 @@ export default function Worker({worker, money, setMoney, multiplier}) {
         localStorage.setItem(worker.UPGRADE_CAP_LOCAL_STORAGE_KEY, JSON.stringify(true))
     };
     return (
-        <div>
-            
+        <div className="worker">
+            <h2>{worker.name}</h2>
+            <h2>Owned: {worker.owned}</h2>
+            <h2>Cost: {worker.cost * multiplier}</h2>
+            <button>Buy {multiplier}?</button>
         </div>
     )
 }
