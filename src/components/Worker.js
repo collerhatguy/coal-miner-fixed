@@ -1,23 +1,28 @@
-import React, {useEffect} from 'react'
+import React, {useEffect} from 'react';
+import useWorker from "../hooks/useWorker";
 
 export default function Worker({worker, money, setMoney, multiplier}) {
-    const buyWorker = (worker) => {
+    const [ owned, setOwned, 
+        cost, setCost, 
+        productionRate, setProductionRate, 
+        productionRateUpgradeCost, setProductionRateUpgradeCost] = useWorker(worker)
+    const buyWorker = () => {
         // check if there is enough money
-        const totalCost = worker.cost * multiplier;
+        const totalCost = cost * multiplier;
         if (money < totalCost) return;
         // if there is subtract from funds
-        setMoney(money - totalCost);
+        setMoney(prevMoney => prevMoney - totalCost);
         // adjust the stats accoringly
-        worker.setOwned(worker.owned + multiplier);
-        worker.setCost(worker.cost + multiplier);
+        setOwned(prevOwned => prevOwned + multiplier);
+        setCost(prevCost => prevCost + multiplier);
     };
-    const miningWorker = (worker) => {
-        setMoney(prevMoney => prevMoney + worker.owned * worker.productionRate);
+    const miningWorker = () => {
+        setMoney(prevMoney => prevMoney + owned * productionRate);
     };
-    const upgradeWorker = (worker) => {
-        if (worker.productionRateUpgradeCost < money) return;
-        worker.setProductionRate(worker.productionRate + 1);
-        worker.setProductionRateUpgradeCost(worker.productionRateUpgradeCost * 2);
+    const upgradeWorker = () => {
+        if (productionRateUpgradeCost < money) return;
+        setProductionRate(prevProductionRate => prevProductionRate + 1);
+        setProductionRateUpgradeCost(prevProductionRateUpgradeCost => prevProductionRateUpgradeCost * 2);
     };
     useEffect(() => {
         worker.save();
@@ -28,11 +33,11 @@ export default function Worker({worker, money, setMoney, multiplier}) {
     return (
         <div className="worker">
             <h2>{worker.name}</h2>
-            <h2>Owned: <span>{worker.owned}</span></h2>
-            <h2>Cost: <span>{worker.cost * multiplier}</span>$</h2>
-            <h2>Upgrade Cost: <span>{worker.productionRateUpgradeCost}</span>$</h2>
-            <button onClick={() => buyWorker(worker)}>Buy <span>{multiplier}</span>?</button>
-            <button onClick={() => upgradeWorker(worker)}>Upgrade?</button>
+            <h2>Owned: <span>{owned}</span></h2>
+            <h2>Cost: <span>{cost * multiplier}</span>$</h2>
+            <h2>Upgrade Cost: <span>{productionRateUpgradeCost}</span>$</h2>
+            <button onClick={() => buyWorker()}>Buy <span>{multiplier}</span>?</button>
+            <button onClick={() => upgradeWorker()}>Upgrade?</button>
         </div>
     )
 }

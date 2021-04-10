@@ -37,22 +37,6 @@ class Worker {
       this.productionRate = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || defaultProductionRate;
       this.productionRateUpgradeCost = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || defaultProductionRateUpgradeCost;
     }
-    // for changing how much is owned
-    setOwned(newOwned) {
-      this.owned = newOwned
-    }
-    // for setting the cost
-    setCost(newCost) {
-      this.cost = newCost
-    }
-    // whatever value is passed to the function is the new production rate for this worker
-    setProductionRate(newProductionRate) {
-      this.productionRate = newProductionRate
-    }
-    // when you call this function double the cost of upgrading the production rate
-    setProductionRateUpgradeCost() {
-      this.productionRateUpgradeCost = this.productionRateUpgradeCost * 2
-    }
     save() {
       this.saveFiles.forEach(save => {
         localStorage.setItem(save.key, JSON.stringify(save.value))
