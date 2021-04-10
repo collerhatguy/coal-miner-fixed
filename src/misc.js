@@ -19,12 +19,12 @@ class Worker {
           value: this.owned
         },
         {
-          key: this.CURRENT_PRODUCTION_RATE_LOCAL_STORAGE_KEY,
-          value: this.productionRate
-        },
-        {
           key: this.COST_LOCAL_STORAGE_KEY,
           value: this.cost
+        },
+        {
+          key: this.CURRENT_PRODUCTION_RATE_LOCAL_STORAGE_KEY,
+          value: this.productionRate
         },
         {
           key: this.CURRENT_PRODUCTION_RATE_UPGRADE_COST_LOCAL_STORAGE_KEY,
