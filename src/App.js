@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import WorkerList from "./components/WorkerList"
 
+import Workers from "./misc";
 import "./App.css";
 import Multiplier from "./components/Multiplier";
 
@@ -19,7 +20,7 @@ function App() {
     <>
       <h1>Coal Miners</h1>
       <h2>Current Money: {money}</h2>
-      <WorkerList money={money} setMoney={setMoney} multiplier={multiplier} />
+      <WorkerList workers={Workers} money={money} setMoney={setMoney} multiplier={multiplier} />
       <Multiplier setMultiplier={setMultiplier} />
     </>
   );
