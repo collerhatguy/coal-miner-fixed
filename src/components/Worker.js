@@ -2,7 +2,8 @@ import React, {useEffect} from 'react';
 import useWorker from "../hooks/useWorker";
 
 export default function Worker({worker, money, setMoney, multiplier}) {
-    const [ owned, setOwned, 
+    const [ 
+        owned, setOwned, 
         cost, setCost, 
         productionRate, setProductionRate, 
         productionRateUpgradeCost, setProductionRateUpgradeCost] = useWorker(worker)
@@ -29,7 +30,7 @@ export default function Worker({worker, money, setMoney, multiplier}) {
     }, [worker])
     useEffect(() => {
         setInterval(() => miningWorker(worker), 10000)
-    }, [])
+    }, [owned])
     return (
         <div className="worker">
             <h2>{worker.name}</h2>
