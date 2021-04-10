@@ -37,6 +37,12 @@ class Worker {
     setProductionRateUpgradeCost() {
       this.productionRateUpgradeCost = this.productionRateUpgradeCost * 2
     }
+    save() {
+      localStorage.setItem(this.OWNED_LOCAL_STORAGE_KEY, JSON.stringify(this.owned))
+      localStorage.setItem(this.COST_LOCAL_STORAGE_KEY, JSON.stringify(this.cost))
+      localStorage.setItem(this.CURRENT_PRODUCTION_RATE_LOCAL_STORAGE_KEY, JSON.stringify(this.productionRate))
+      localStorage.setItem(this.CURRENT_PRODUCTION_RATE_UPGRADE_COST_LOCAL_STORAGE_KEY, JSON.stringify(this.productionRateUpgradeCost))
+    }
 }
 
 const miners = new Worker(10, 1, 100, "Miner")

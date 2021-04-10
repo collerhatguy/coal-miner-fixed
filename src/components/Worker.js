@@ -20,11 +20,8 @@ export default function Worker({worker, money, setMoney, multiplier}) {
         worker.setProductionRateUpgradeCost(worker.productionRateUpgradeCost * 2);
     };
     useEffect(() => {
-        localStorage.setItem(worker.OWNED_LOCAL_STORAGE_KEY, JSON.stringify(worker.owned))
-        localStorage.setItem(worker.COST_LOCAL_STORAGE_KEY, JSON.stringify(worker.cost))
-        localStorage.setItem(worker.CURRENT_PRODUCTION_RATE_LOCAL_STORAGE_KEY, JSON.stringify(worker.productionRate))
-        localStorage.setItem(worker.CURRENT_PRODUCTION_RATE_UPGRADE_COST_LOCAL_STORAGE_KEY, JSON.stringify(worker.productionRateUpgradeCost))
-    }, [worker.cost, worker.owned, worker.productionRate, worker.productionRateUpgradeCost])
+        worker.save();
+    }, [worker])
     useEffect(() => {
         setInterval(() => miningWorker(worker), 10000)
     }, [])
