@@ -13,13 +13,29 @@ class Worker {
       this.UPGRADE_CAP_LOCAL_STORAGE_KEY = `Coalminer.${name}CapLimit`;
       this.CURRENT_PRODUCTION_RATE_LOCAL_STORAGE_KEY = `Coalminer.${name}CurrentProductionRate`;
       this.CURRENT_PRODUCTION_RATE_UPGRADE_COST_LOCAL_STORAGE_KEY = `Coalminer.${name}CurrentProductionRateUpgradeCost`;
-      
+      this.saveFiles = [
+        {
+          key: this.OWNED_LOCAL_STORAGE_KEY,
+          value: this.owned
+        },
+        {
+          key: this.CURRENT_PRODUCTION_RATE_LOCAL_STORAGE_KEY,
+          value: this.productionRate
+        },
+        {
+          key: this.COST_LOCAL_STORAGE_KEY,
+          value: this.cost
+        },
+        {
+          key: this.CURRENT_PRODUCTION_RATE_UPGRADE_COST_LOCAL_STORAGE_KEY,
+          value: this.productionRateUpgradeCost
+        }
+      ]
       this.name = name;
       this.owned = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || 0;
       this.cost = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || defaultCost;
       this.productionRate = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || defaultProductionRate;
       this.productionRateUpgradeCost = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || defaultProductionRateUpgradeCost;
-
     }
     // for changing how much is owned
     setOwned(newOwned) {
@@ -38,10 +54,9 @@ class Worker {
       this.productionRateUpgradeCost = this.productionRateUpgradeCost * 2
     }
     save() {
-      localStorage.setItem(this.OWNED_LOCAL_STORAGE_KEY, JSON.stringify(this.owned))
-      localStorage.setItem(this.COST_LOCAL_STORAGE_KEY, JSON.stringify(this.cost))
-      localStorage.setItem(this.CURRENT_PRODUCTION_RATE_LOCAL_STORAGE_KEY, JSON.stringify(this.productionRate))
-      localStorage.setItem(this.CURRENT_PRODUCTION_RATE_UPGRADE_COST_LOCAL_STORAGE_KEY, JSON.stringify(this.productionRateUpgradeCost))
+      this.saveFiles.forEach(save => {
+        localStorage.setItem(save.key, JSON.stringify(save.value))
+      })
     }
 }
 
