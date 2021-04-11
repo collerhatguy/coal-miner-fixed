@@ -39,9 +39,7 @@ export default function Worker({worker, money, setMoney, multiplier}) {
     }
     return (
         <div className="worker">
-            <div style={{
-                display: visible ? "block" : "none",
-            }}>
+            <div className={ visible ? "visible" : "hidden"}>
                 <h2 className="worker-name">{worker.name}</h2>
                 <h2>Owned: <span>{owned}</span></h2>
                 <h2>Cost: <span>{cost * multiplier}</span>$</h2>
@@ -51,14 +49,7 @@ export default function Worker({worker, money, setMoney, multiplier}) {
                 <button onClick={() => upgradeWorker()}>Upgrade?</button>
             </div>
             <div>
-                <button style={{
-                    display: visible ? "block" : "none",
-                }}
-                onClick={() => reveal()}>Minimize</button>
-                <button style={{
-                    display: visible ? "none" : "block",
-                }}
-                onClick={() => reveal()}>Reveal</button>
+                <button onClick={() => reveal()}>Reveal</button>
             </div>
         </div>
     )

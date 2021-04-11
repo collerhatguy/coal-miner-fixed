@@ -36,12 +36,6 @@ h2, button {
   border: solid .2em var(--tertiary-color);
   text-align: center;
 }
-.worker div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
 .worker-name {
   background-color: var(--tertiary-color);
   width: 90%;
@@ -50,5 +44,19 @@ span {
   padding: 0;
   margin: 0;
   color: var(--tertiary-color);
+}
+.visible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  animation: grow 500 linear forwards;
+}
+.hidden {
+  display: none;
+}
+@keyframes grow {
+  from {font-size: 0%;}
+  to {font-size: 100%;}
 }
 
