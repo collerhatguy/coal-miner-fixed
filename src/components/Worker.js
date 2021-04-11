@@ -1,8 +1,9 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import useWorker from "../hooks/useWorker";
 
 export default function Worker({worker, money, setMoney, multiplier}) {
     const miningSpeed = 10000;
+    const [visible, setVisible] = useState(true);
     const [ 
         owned, setOwned, 
         cost, setCost, 
@@ -20,7 +21,7 @@ export default function Worker({worker, money, setMoney, multiplier}) {
     };
     // upgrade the workers production rate
     const upgradeWorker = () => {
-        if (productionRateUpgradeCost < money) return;
+        if (productionRateUpgradeCost > money) return;
         setProductionRate(prevProductionRate => prevProductionRate + 1);
         setProductionRateUpgradeCost(prevProductionRateUpgradeCost => prevProductionRateUpgradeCost * 2);
     };
@@ -32,14 +33,31 @@ export default function Worker({worker, money, setMoney, multiplier}) {
     useEffect(() => {
         setInterval(() => miningWorker(worker), miningSpeed)
     }, [owned])
+    const reveal = () => {
+        setVisible(prevVisible => !prevVisible)
+    }
     return (
         <div className="worker">
-            <h2>{worker.name}</h2>
-            <h2>Owned: <span>{owned}</span></h2>
-            <h2>Cost: <span>{cost * multiplier}</span>$</h2>
-            <h2>Upgrade Cost: <span>{productionRateUpgradeCost}</span>$</h2>
-            <button onClick={() => buyWorker()}>Buy <span>{multiplier}</span>?</button>
-            <button onClick={() => upgradeWorker()}>Upgrade?</button>
+            <div style={{
+                display: visible ? "block" : "none",
+            }}>
+                <h2>{worker.name}</h2>
+                <h2>Owned: <span>{owned}</span></h2>
+                <h2>Cost: <span>{cost * multiplier}</span>$</h2>
+                <h2>Upgrade Cost: <span>{productionRateUpgradeCost}</span>$</h2>
+                <button onClick={() => buyWorker()}>Buy <span>{multiplier}</span>?</button>
+                <button onClick={() => upgradeWorker()}>Upgrade?</button>
+            </div>
+            <div>
+                <button style={{
+                    display: visible ? "block" : "none",
+                }}
+                onClick={() => reveal()}>Minimize</button>
+                <button style={{
+                    display: visible ? "none" : "block",
+                }}
+                onClick={() => reveal()}>Reveal</button>
+            </div>
         </div>
     )
 }
