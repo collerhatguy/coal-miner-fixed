@@ -42,7 +42,7 @@ export default function Worker({worker, money, setMoney, multiplier}) {
             <div style={{
                 display: visible ? "block" : "none",
             }}>
-                <h2>{worker.name}</h2>
+                <h2 className="worker-name">{worker.name}</h2>
                 <h2>Owned: <span>{owned}</span></h2>
                 <h2>Cost: <span>{cost * multiplier}</span>$</h2>
                 <h2>Production Rate: <span>{productionRate}</span>$</h2>

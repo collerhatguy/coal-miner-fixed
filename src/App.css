@@ -33,7 +33,18 @@ h2, button {
   font-size: calc(var(--max-font) / 1.618);
 }
 .worker {
-  border: solid .2em var(--secondary-color);
+  border: solid .2em var(--tertiary-color);
+  text-align: center;
+}
+.worker div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.worker-name {
+  background-color: var(--tertiary-color);
+  width: 90%;
 }
 span {
   padding: 0;
