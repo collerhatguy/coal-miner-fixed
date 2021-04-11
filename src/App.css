@@ -1,6 +1,7 @@
 :root {
-  --primary-color: brown;
+  --primary-color: white;
   --secondary-color: black;
+  --tertiary-color: brown;
   --max-font: 3rem;
 }
 * {
@@ -31,4 +32,9 @@ h2, button {
 .worker {
   border: solid .2em var(--secondary-color);
 }
-
+progress {
+  width: 100%;
+}
+span {
+  color: var(--tertiary-color);
+}
