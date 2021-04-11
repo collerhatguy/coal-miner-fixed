@@ -25,11 +25,11 @@ export default function Worker({worker, money, setMoney, multiplier}) {
         setProductionRate(prevProductionRate => prevProductionRate + 1);
         setProductionRateUpgradeCost(prevProductionRateUpgradeCost => prevProductionRateUpgradeCost * 2);
     };
+    // useEffect(() => {
+    //     const mining = setInterval(() => miningWorker(worker), 10000)
+    // }, [])
     useEffect(() => {
-        worker.save();
-    }, [worker])
-    useEffect(() => {
-        setInterval(() => miningWorker(worker), 10000)
+        const mining = setInterval(() => miningWorker(worker), 10000)
     }, [owned])
     return (
         <div className="worker">
