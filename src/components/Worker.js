@@ -49,7 +49,14 @@ export default function Worker({worker, money, setMoney, multiplier}) {
                 <button onClick={() => upgradeWorker()}>Upgrade?</button>
             </div>
             <div>
-                <button onClick={() => reveal()}>Reveal</button>
+                <button style={{
+                    display: visible ? "block" : "none",
+                }}
+                onClick={() => reveal()}>Reveal</button>
+                <button style={{
+                    display: visible ? "none" : "block",
+                }}
+                onClick={() => reveal()}>Minimize</button>
             </div>
         </div>
     )

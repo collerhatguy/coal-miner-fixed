@@ -1,0 +1,61 @@
+
+$primary-color: white;
+$secondary-color: black;
+$tertiary-color: brown;
+$max-font: 3rem;
+
+* {
+    padding: .2em;
+    width: fit-content;
+    margin: .1em auto;
+}
+body {
+    height: 98vh;
+    width: 95vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: space-around;
+    background-color: $primary-color;
+    color: $secondary-color;
+}
+h1 {
+    font-size: $max-font; 
+}
+h2, button {
+    font-size: $max-font / 1.618;
+}
+#worker-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#multiplierContainer {
+    font-size: $max-font / 1.618;
+}
+.worker {
+    border: solid .2em $tertiary-color;
+    text-align: center;
+}
+.worker-name {
+    background-color: $tertiary-color;
+    width: 90%;
+}
+span {
+    padding: 0;
+    margin: 0;
+    color: $tertiary-color;
+}
+.visible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    animation: grow 500 linear forwards;
+}
+.hidden {
+    display: none;
+}
+@keyframes grow {
+    from {font-size: 0%;}
+    to {font-size: 100%;}
+}

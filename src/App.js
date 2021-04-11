@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import WorkerList from "./components/WorkerList"
 
 import Workers from "./misc";
-import "./App.css";
+import "./css/App.css";
 import Multiplier from "./components/Multiplier";
 
 function App() {
