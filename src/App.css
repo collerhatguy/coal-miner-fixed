@@ -1,6 +1,7 @@
 :root {
-  --primary-color: brown;
+  --primary-color: white;
   --secondary-color: black;
+  --tertiary-color: brown;
   --max-font: 3rem;
 }
 * {
@@ -28,7 +29,15 @@ h2, button {
   justify-content: space-between;
   align-items: center;
 }
+#multiplierContainer {
+  font-size: calc(var(--max-font) / 1.618);
+}
 .worker {
   border: solid .2em var(--secondary-color);
+}
+span {
+  padding: 0;
+  margin: 0;
+  color: var(--tertiary-color);
 }
 
