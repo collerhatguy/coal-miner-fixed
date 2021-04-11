@@ -22,6 +22,7 @@ export default function Worker({worker, money, setMoney, multiplier}) {
     // upgrade the workers production rate
     const upgradeWorker = () => {
         if (productionRateUpgradeCost > money) return;
+        setMoney(prevMoney => prevMoney - productionRateUpgradeCost);
         setProductionRate(prevProductionRate => prevProductionRate + 1);
         setProductionRateUpgradeCost(prevProductionRateUpgradeCost => prevProductionRateUpgradeCost * 2);
     };
@@ -45,7 +46,7 @@ export default function Worker({worker, money, setMoney, multiplier}) {
                 <h2>Owned: <span>{owned}</span></h2>
                 <h2>Cost: <span>{cost * multiplier}</span>$</h2>
                 <h2>Production Rate: <span>{productionRate}</span>$</h2>
-                <h2>Upgrade Cost: <span>{productionRateUpgradeCost}</span>$</h2>
+                <h2>Upgrade Cost: <span>{productionRateUpgradeCost}</span></h2>
                 <button onClick={() => buyWorker()}>Buy <span>{multiplier}</span>?</button>
                 <button onClick={() => upgradeWorker()}>Upgrade?</button>
             </div>
