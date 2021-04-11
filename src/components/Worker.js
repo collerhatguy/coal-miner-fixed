@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import useWorker from "../hooks/useWorker";
 
 export default function Worker({worker, money, setMoney, multiplier}) {
+    const miningSpeed = 10000;
     const [ 
         owned, setOwned, 
         cost, setCost, 
@@ -17,19 +18,19 @@ export default function Worker({worker, money, setMoney, multiplier}) {
         setOwned(prevOwned => prevOwned + multiplier);
         setCost(prevCost => prevCost + multiplier);
     };
-    const miningWorker = () => {
-        setMoney(prevMoney => prevMoney + owned * productionRate);
-    };
+    // upgrade the workers production rate
     const upgradeWorker = () => {
         if (productionRateUpgradeCost < money) return;
         setProductionRate(prevProductionRate => prevProductionRate + 1);
         setProductionRateUpgradeCost(prevProductionRateUpgradeCost => prevProductionRateUpgradeCost * 2);
     };
-    // useEffect(() => {
-    //     const mining = setInterval(() => miningWorker(worker), 10000)
-    // }, [])
+    // the functoin for whenever our worker mines
+    const miningWorker = () => {
+        setMoney(prevMoney => prevMoney + owned * productionRate);
+    };
+    // restart the mining function whenever we buy another miner
     useEffect(() => {
-        const mining = setInterval(() => miningWorker(worker), 10000)
+        setInterval(() => miningWorker(worker), miningSpeed)
     }, [owned])
     return (
         <div className="worker">
