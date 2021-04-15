@@ -16,7 +16,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: space-around;
-    background-color: $tertiary-color-400;
+    background-color: $primary-color;
     color: $secondary-color;
 }
 h1 {
@@ -24,6 +24,21 @@ h1 {
 }
 h2, button {
     font-size: $max-font / 1.618;
+}
+button {
+    background-color: $tertiary-color-100;
+    color: $tertiary-color-400;
+    border: $tertiary-color-400 solid .1em;
+    cursor: pointer;
+    &:hover {
+        background-color: $tertiary-color-400;
+        color: $tertiary-color-100;
+    }
+    &:focus {
+        outline: none;
+        background-color: $tertiary-color-400;
+        color: $tertiary-color-100;
+    }
 }
 #worker-list {
     display: flex;
@@ -34,17 +49,18 @@ h2, button {
     font-size: $max-font / 1.618;
 }
 .worker {
-    border: solid .2em $tertiary-color;
+    border: solid .2em $tertiary-color-200;
     text-align: center;
 }
 .worker-name {
-    background-color: $tertiary-color;
+    background-color: $tertiary-color-400;
+    color: $tertiary-color-100;
     width: 90%;
 }
 span {
     padding: 0;
     margin: 0;
-    color: $tertiary-color;
+    color: $tertiary-color-200;
 }
 .visible {
     display: flex;

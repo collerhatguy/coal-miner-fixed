@@ -7,16 +7,12 @@
 }
 
 body {
-  height: 98vh;
-  width: 95vw;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  -webkit-box-align: space-around;
-      -ms-flex-align: space-around;
-          align-items: space-around;
   background-color: white;
   color: black;
 }
@@ -27,6 +23,24 @@ h1 {
 
 h2, button {
   font-size: 1.85414rem;
+}
+
+button {
+  background-color: #ff9999;
+  color: #660000;
+  border: #660000 solid 0.1em;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #660000;
+  color: #ff9999;
+}
+
+button:focus {
+  outline: none;
+  background-color: #660000;
+  color: #ff9999;
 }
 
 #worker-list {
@@ -46,19 +60,20 @@ h2, button {
 }
 
 .worker {
-  border: solid 0.2em brown;
+  border: solid 0.2em #ff3333;
   text-align: center;
 }
 
 .worker-name {
-  background-color: brown;
+  background-color: #660000;
+  color: #ff9999;
   width: 90%;
 }
 
 span {
   padding: 0;
   margin: 0;
-  color: brown;
+  color: #ff3333;
 }
 
 .visible {
