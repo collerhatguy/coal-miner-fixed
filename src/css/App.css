@@ -29,6 +29,8 @@ button {
   background-color: #ff9999;
   color: #660000;
   border: #660000 solid 0.1em;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
   cursor: pointer;
 }
 
@@ -43,6 +45,22 @@ button:focus {
   color: #ff9999;
 }
 
+input {
+  cursor: pointer;
+}
+
+span {
+  padding: 0;
+  margin: 0;
+  color: #ff3333;
+}
+
+#multiplierContainer {
+  font-size: 1.85414rem;
+  background-color: #ff3333;
+  color: white;
+}
+
 #worker-list {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -55,10 +73,6 @@ button:focus {
           align-items: center;
 }
 
-#multiplierContainer {
-  font-size: 1.85414rem;
-}
-
 .worker {
   border: solid 0.2em #ff3333;
   text-align: center;
@@ -68,12 +82,6 @@ button:focus {
   background-color: #660000;
   color: #ff9999;
   width: 90%;
-}
-
-span {
-  padding: 0;
-  margin: 0;
-  color: #ff3333;
 }
 
 .visible {

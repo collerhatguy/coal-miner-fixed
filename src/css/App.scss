@@ -1,4 +1,12 @@
+// table of contents
+// 1. variables
+// 2. default styling
+// 3. tags
+// 4. ids
+// 5. classes
+// 6. animation
 
+// 1. variables
 $primary-color: hsl(0, 0%, 100%);
 $secondary-color: hsl(0, 0%, 0%);
 $tertiary-color-100: hsl(0, 100%, 80%);
@@ -7,11 +15,14 @@ $tertiary-color-300: hsl(0, 100%, 40%);
 $tertiary-color-400: hsl(0, 100%, 20%);
 $max-font: 3rem;
 
+// 2. default styling
 * {
     padding: .2em;
     width: fit-content;
     margin: .1em auto;
 }
+
+// 3. tags
 body {
     width: 100%;
     display: flex;
@@ -29,6 +40,7 @@ button {
     background-color: $tertiary-color-100;
     color: $tertiary-color-400;
     border: $tertiary-color-400 solid .1em;
+    transition-duration: 300ms;
     cursor: pointer;
     &:hover {
         background-color: $tertiary-color-400;
@@ -40,14 +52,28 @@ button {
         color: $tertiary-color-100;
     }
 }
+input {
+    cursor: pointer;
+}
+span {
+    padding: 0;
+    margin: 0;
+    color: $tertiary-color-200;
+}
+
+// 4. ids
+#multiplierContainer {
+    font-size: $max-font / 1.618;
+    background-color: $tertiary-color-200;
+    color: $primary-color;
+}
 #worker-list {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-#multiplierContainer {
-    font-size: $max-font / 1.618;
-}
+
+// 5. classes
 .worker {
     border: solid .2em $tertiary-color-200;
     text-align: center;
@@ -56,11 +82,6 @@ button {
     background-color: $tertiary-color-400;
     color: $tertiary-color-100;
     width: 90%;
-}
-span {
-    padding: 0;
-    margin: 0;
-    color: $tertiary-color-200;
 }
 .visible {
     display: flex;
@@ -72,8 +93,9 @@ span {
 }
 .hidden {
     display: none;
-
 }
+
+// 6. animation
 @keyframes grow {
     from {
         transform: scaleY(0);
