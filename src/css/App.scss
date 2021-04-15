@@ -1,7 +1,10 @@
 
-$primary-color: white;
-$secondary-color: black;
-$tertiary-color: brown;
+$primary-color: hsl(0, 0%, 100%);
+$secondary-color: hsl(0, 0%, 0%);
+$tertiary-color-100: hsl(0, 100%, 80%);
+$tertiary-color-200: hsl(0, 100%, 60%);
+$tertiary-color-300: hsl(0, 100%, 40%);
+$tertiary-color-400: hsl(0, 100%, 20%);
 $max-font: 3rem;
 
 * {
@@ -10,12 +13,10 @@ $max-font: 3rem;
     margin: .1em auto;
 }
 body {
-    height: 98vh;
-    width: 95vw;
+    width: 100%;
     display: flex;
     justify-content: space-around;
-    align-items: space-around;
-    background-color: $primary-color;
+    background-color: $tertiary-color-400;
     color: $secondary-color;
 }
 h1 {
