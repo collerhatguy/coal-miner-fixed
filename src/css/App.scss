@@ -7,13 +7,7 @@
 // 6. animation
 
 // 1. variables
-$primary-color: hsl(0, 0%, 100%);
-$secondary-color: hsl(0, 0%, 0%);
-$tertiary-color-100: hsl(0, 100%, 80%);
-$tertiary-color-200: hsl(0, 100%, 60%);
-$tertiary-color-300: hsl(0, 100%, 40%);
-$tertiary-color-400: hsl(0, 100%, 20%);
-$max-font: 3rem;
+@import "./variables";
 
 // 2. default styling
 * {
@@ -23,43 +17,7 @@ $max-font: 3rem;
 }
 
 // 3. tags
-body {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    background-color: $primary-color;
-    color: $secondary-color;
-}
-h1 {
-    font-size: $max-font; 
-}
-h2, button {
-    font-size: $max-font / 1.618;
-}
-button {
-    background-color: $tertiary-color-100;
-    color: $tertiary-color-400;
-    border: $tertiary-color-400 solid .1em;
-    transition-duration: 300ms;
-    cursor: pointer;
-    &:hover {
-        background-color: $tertiary-color-400;
-        color: $tertiary-color-100;
-    }
-    &:focus {
-        outline: none;
-        background-color: $tertiary-color-400;
-        color: $tertiary-color-100;
-    }
-}
-input {
-    cursor: pointer;
-}
-span {
-    padding: 0;
-    margin: 0;
-    color: $tertiary-color-200;
-}
+@import "./tags";
 
 // 4. ids
 #multiplierContainer {
@@ -74,26 +32,7 @@ span {
 }
 
 // 5. classes
-.worker {
-    border: solid .2em $tertiary-color-200;
-    text-align: center;
-}
-.worker-name {
-    background-color: $tertiary-color-400;
-    color: $tertiary-color-100;
-    width: 90%;
-}
-.visible {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: min-content;
-    animation: grow 1000ms linear forwards;
-}
-.hidden {
-    display: none;
-}
+@import "./classes";
 
 // 6. animation
 @keyframes grow {

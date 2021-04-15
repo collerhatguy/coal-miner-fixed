@@ -1,0 +1,21 @@
+
+.worker {
+    border: solid .2em $tertiary-color-200;
+    text-align: center;
+}
+.worker-name {
+    background-color: $tertiary-color-400;
+    color: $tertiary-color-100;
+    width: 90%;
+}
+.visible {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: min-content;
+    animation: grow 1000ms linear forwards;
+}
+.hidden {
+    display: none;
+}
