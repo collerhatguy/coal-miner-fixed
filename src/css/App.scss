@@ -67,12 +67,18 @@ span {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    animation: grow 500 linear forwards;
+    height: min-content;
+    animation: grow 1000ms linear forwards;
 }
 .hidden {
     display: none;
+
 }
 @keyframes grow {
-    from {font-size: 0%;}
-    to {font-size: 100%;}
+    from {
+        transform: scaleY(0);
+    }
+    to {
+        transform: scaleY(1);
+    }
 }

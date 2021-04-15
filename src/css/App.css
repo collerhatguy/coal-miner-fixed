@@ -90,8 +90,11 @@ span {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-animation: grow 500 linear forwards;
-          animation: grow 500 linear forwards;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  -webkit-animation: grow 1000ms linear forwards;
+          animation: grow 1000ms linear forwards;
 }
 
 .hidden {
@@ -100,19 +103,23 @@ span {
 
 @-webkit-keyframes grow {
   from {
-    font-size: 0%;
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
   }
   to {
-    font-size: 100%;
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
   }
 }
 
 @keyframes grow {
   from {
-    font-size: 0%;
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
   }
   to {
-    font-size: 100%;
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
   }
 }
 /*# sourceMappingURL=App.css.map */
