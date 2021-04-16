@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/coal-miner-fixed/static/css/main.42482c18.chunk.css",
-    "main.js": "/coal-miner-fixed/static/js/main.b0073dd0.chunk.js",
-    "main.js.map": "/coal-miner-fixed/static/js/main.b0073dd0.chunk.js.map",
+    "main.css": "/coal-miner-fixed/static/css/main.8309fee5.chunk.css",
+    "main.js": "/coal-miner-fixed/static/js/main.2d9cc1ab.chunk.js",
+    "main.js.map": "/coal-miner-fixed/static/js/main.2d9cc1ab.chunk.js.map",
     "runtime-main.js": "/coal-miner-fixed/static/js/runtime-main.88228a2b.js",
     "runtime-main.js.map": "/coal-miner-fixed/static/js/runtime-main.88228a2b.js.map",
-    "static/js/2.4bdd32a1.chunk.js": "/coal-miner-fixed/static/js/2.4bdd32a1.chunk.js",
-    "static/js/2.4bdd32a1.chunk.js.map": "/coal-miner-fixed/static/js/2.4bdd32a1.chunk.js.map",
+    "static/js/2.dc7dd056.chunk.js": "/coal-miner-fixed/static/js/2.dc7dd056.chunk.js",
+    "static/js/2.dc7dd056.chunk.js.map": "/coal-miner-fixed/static/js/2.dc7dd056.chunk.js.map",
     "index.html": "/coal-miner-fixed/index.html",
-    "static/css/main.42482c18.chunk.css.map": "/coal-miner-fixed/static/css/main.42482c18.chunk.css.map",
-    "static/js/2.4bdd32a1.chunk.js.LICENSE.txt": "/coal-miner-fixed/static/js/2.4bdd32a1.chunk.js.LICENSE.txt"
+    "static/css/main.8309fee5.chunk.css.map": "/coal-miner-fixed/static/css/main.8309fee5.chunk.css.map",
+    "static/js/2.dc7dd056.chunk.js.LICENSE.txt": "/coal-miner-fixed/static/js/2.dc7dd056.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.88228a2b.js",
-    "static/js/2.4bdd32a1.chunk.js",
-    "static/css/main.42482c18.chunk.css",
-    "static/js/main.b0073dd0.chunk.js"
+    "static/js/2.dc7dd056.chunk.js",
+    "static/css/main.8309fee5.chunk.css",
+    "static/js/main.2d9cc1ab.chunk.js"
   ]
 }
