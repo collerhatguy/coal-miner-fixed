@@ -56,7 +56,7 @@ export default function Worker({worker, money, setMoney, multiplier}) {
                     }}
                     onClick={() => reveal()}
                 >
-                    Reveal
+                    Minimize
                 </button>
                 <button 
                     tabIndex="0"
@@ -65,7 +65,7 @@ export default function Worker({worker, money, setMoney, multiplier}) {
                     }}
                     onClick={() => reveal()}
                 >
-                    Minimize
+                    Reveal
                 </button>
             </div>
         </div>
