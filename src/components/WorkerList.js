@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Worker from "./Worker";
 import Workers from "../misc";
 

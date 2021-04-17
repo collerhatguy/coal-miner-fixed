@@ -2,7 +2,7 @@ import React, { useEffect, useState, useMemo } from "react";
 import WorkerList from "./components/WorkerList"
 
 import "./css/App.css";
-import Multiplier from "./components/Multiplier";
+import MultiplierList from "./components/MultiplierList";
 
 function App() {
   // set everything back to default values based on local save
@@ -20,7 +20,7 @@ function App() {
       <h1>Coal Miners</h1>
       <h2>Current Money: {money}</h2>
       <WorkerList money={money} setMoney={setMoney} multiplier={multiplier} />
-      <Multiplier setMultiplier={setMultiplier} />
+      <MultiplierList setMultiplier={setMultiplier} />
     </>
   );
 }
