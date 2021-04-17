@@ -41,7 +41,11 @@ export default function Worker({worker, money, setMoney, multiplier}) {
         setMoney(prevMoney => prevMoney - state.productionRateUpgradeCost);
         dispatch({type: ACTIONS.Upgrade})
     }
-    
+    useEffect(() => {
+        setInterval(() => {
+            setMoney(prevMoney => prevMoney + (state.owned * state.productionRate))
+        }, miningSpeed)
+    }, [])
     return (
         <div className="worker">
             <h2 className="worker-name">{state.name}</h2>
