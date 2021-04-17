@@ -4,17 +4,19 @@ const ACTIONS = {
     Buy: "BuyWorker",
     Mining: "MiningWorker",
 }
-function reducer(state, action, payload) {
-    switch(action) {
+function reducer(state, action) {
+    switch(action.type) {
         case ACTIONS.Upgrade:
             return {
                 ...state,
-                productionRate: this.productionRate + 1, 
+                productionRate: state.productionRate + 1, 
+                productionRateCost: state.productionRateCost * 2, 
             }
         case ACTIONS.Buy:
             return {
                 ...state,
-                owned: this.owned + payload.amount, 
+                owned: state.owned + action.payload,
+                cost: state.cost + action.payload, 
             }
         case ACTIONS.Mining:
             // Mining function
@@ -30,17 +32,18 @@ export default function Worker({worker, money, setMoney, multiplier}) {
     const reveal = () => {
         setVisible(prevVisible => !prevVisible)
     }
+    console.log(state);
     return (
         <div className="worker">
             <h2 className="worker-name">{state.name}</h2>
-            {/* <div className={ visible ? "visible" : "hidden"}>
-                <h2>Owned: <span>{owned}</span></h2>
-                <h2>Cost: <span>{cost * multiplier}</span>$</h2>
-                <h2>Production Rate: <span>{productionRate}</span>$</h2>
-                <h2>Upgrade Cost: <span>{productionRateUpgradeCost}</span></h2>
-                <button onClick={() => buyWorker()}>Buy <span>{multiplier}</span>?</button>
-                <button onClick={() => upgradeWorker()}>Upgrade?</button>
-            </div> */}
+             <div className={ visible ? "visible" : "hidden"}>
+                <h2>Owned: <span>{state.owned}</span></h2>
+                <h2>Cost: <span>{state.cost * multiplier}</span>$</h2>
+                <h2>Production Rate: <span>{state.productionRate}</span>$</h2>
+                <h2>Upgrade Cost: <span>{state.productionRateUpgradeCost}</span></h2>
+                <button onClick={() => dispatch({type: ACTIONS.Buy, payload: multiplier})}>Buy <span>{multiplier}</span>?</button>
+                <button onClick={() => dispatch({type: ACTIONS.Upgrade})}>Upgrade?</button>
+            </div>
             <div>
                 <button 
                     tabIndex="0"
