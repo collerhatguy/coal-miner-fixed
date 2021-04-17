@@ -5,7 +5,7 @@ export default function MultiplierList({setMultiplier}) {
     return (
         <div id="multiplierContainer">
             <fieldset>
-            <legend>Multipliers for buying in mass:</legend>
+                <legend>Multipliers for buying in mass:</legend>
                 <Multiplier amount={1} setMultiplier={setMultiplier} key="1" />
                 <Multiplier amount={10} setMultiplier={setMultiplier} key="10" />
                 <Multiplier amount={100} setMultiplier={setMultiplier} key="100" />

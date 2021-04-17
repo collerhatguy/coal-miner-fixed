@@ -1,7 +1,25 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useReducer} from 'react';
 import useWorker from "../hooks/useWorker";
+const ACTIONS = {
+    Upgrade: "UpgradeWorker",
+    Buy: "BuyWorker",
+    Mining: "MiningWorker",
+}
+function reducer(state, action) {
+    switch(action) {
+        case ACTIONS.Upgrade:
+            // Upgrade function
+        case ACTIONS.Buy:
+            // Buy function
+        case ACTIONS.Mining:
+            // Mining function
+        default: return state
+    }
+}
 
 export default function Worker({worker, money, setMoney, multiplier}) {
+    // set default state to worker and pass reducer function
+    const [state, dispatch] = useReducer(worker, reducer);
     const miningSpeed = 10000;
     const [visible, setVisible] = useState(true);
     const [ 
