@@ -18,8 +18,6 @@ function reducer(state, action) {
                 owned: state.owned + action.payload,
                 cost: state.cost + action.payload, 
             }
-        case ACTIONS.Mining:
-            // Mining function
         default: return state
     }
 }
@@ -32,7 +30,18 @@ export default function Worker({worker, money, setMoney, multiplier}) {
     const reveal = () => {
         setVisible(prevVisible => !prevVisible)
     }
-    console.log(state);
+    const BuyWorker = () => {
+        const totalCost = state.cost * multiplier;
+        if (money < totalCost) return;
+        setMoney(prevMoney => prevMoney - totalCost);
+        dispatch({type: ACTIONS.Buy, payload: multiplier})
+    }
+    const UpgradeWorker = () => {
+        if (money < state.productionRateUpgradeCost) return;
+        setMoney(prevMoney => prevMoney - state.productionRateUpgradeCost);
+        dispatch({type: ACTIONS.Upgrade})
+    }
+    
     return (
         <div className="worker">
             <h2 className="worker-name">{state.name}</h2>
@@ -41,8 +50,8 @@ export default function Worker({worker, money, setMoney, multiplier}) {
                 <h2>Cost: <span>{state.cost * multiplier}</span>$</h2>
                 <h2>Production Rate: <span>{state.productionRate}</span>$</h2>
                 <h2>Upgrade Cost: <span>{state.productionRateUpgradeCost}</span></h2>
-                <button onClick={() => dispatch({type: ACTIONS.Buy, payload: multiplier})}>Buy <span>{multiplier}</span>?</button>
-                <button onClick={() => dispatch({type: ACTIONS.Upgrade})}>Upgrade?</button>
+                <button onClick={() => BuyWorker()}>Buy <span>{multiplier}</span>?</button>
+                <button onClick={() => UpgradeWorker()}>Upgrade?</button>
             </div>
             <div>
                 <button 
