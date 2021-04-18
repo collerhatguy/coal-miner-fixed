@@ -1,52 +1,66 @@
-import React, {useEffect, useState} from 'react';
-import useWorker from "../hooks/useWorker";
+import React, {useEffect, useState, useReducer} from 'react';
+const ACTIONS = {
+    Upgrade: "UpgradeWorker",
+    Buy: "BuyWorker",
+    Mining: "MiningWorker",
+}
+function reducer(state, action) {
+    switch(action.type) {
+        case ACTIONS.Upgrade:
+            return {
+                ...state,
+                productionRate: state.productionRate + 1, 
+                productionRateCost: state.productionRateCost * 2, 
+            }
+        case ACTIONS.Buy:
+            return {
+                ...state,
+                owned: state.owned + action.payload,
+                cost: state.cost + action.payload, 
+            }
+        case ACTIONS.Mining:
+            // 
+            return {
+                ...state,
+            }
+        default: return state
+    }
+}
 
 export default function Worker({worker, money, setMoney, multiplier}) {
-    const miningSpeed = 10000;
+    // set default state to worker and pass reducer function
+    const [state, dispatch] = useReducer(reducer, worker);
+    const miningSpeed = 5000;
     const [visible, setVisible] = useState(true);
-    const [ 
-        owned, setOwned, 
-        cost, setCost, 
-        productionRate, setProductionRate, 
-        productionRateUpgradeCost, setProductionRateUpgradeCost] = useWorker(worker)
-    const buyWorker = () => {
-        // check if there is enough money
-        const totalCost = cost * multiplier;
-        if (money < totalCost) return;
-        // if there is subtract from funds
-        setMoney(prevMoney => prevMoney - totalCost);
-        // adjust the stats accoringly
-        setOwned(prevOwned => prevOwned + multiplier);
-        setCost(prevCost => prevCost + multiplier);
-    };
-    // upgrade the workers production rate
-    const upgradeWorker = () => {
-        if (productionRateUpgradeCost > money) return;
-        setMoney(prevMoney => prevMoney - productionRateUpgradeCost);
-        setProductionRate(prevProductionRate => prevProductionRate + 1);
-        setProductionRateUpgradeCost(prevProductionRateUpgradeCost => prevProductionRateUpgradeCost * 2);
-    };
-    // the functoin for whenever our worker mines
-    const miningWorker = () => {
-        setMoney(prevMoney => prevMoney + owned * productionRate);
-    };
-    // restart the mining function whenever we buy another miner
-    useEffect(() => {
-        setInterval(() => miningWorker(worker), miningSpeed)
-    }, [owned])
     const reveal = () => {
         setVisible(prevVisible => !prevVisible)
     }
+    const BuyWorker = () => {
+        const totalCost = state.cost * multiplier;
+        if (money < totalCost) return;
+        setMoney(prevMoney => prevMoney - totalCost);
+        dispatch({type: ACTIONS.Buy, payload: multiplier})
+    }
+    const UpgradeWorker = () => {
+        if (money < state.productionRateUpgradeCost) return;
+        setMoney(prevMoney => prevMoney - state.productionRateUpgradeCost);
+        dispatch({type: ACTIONS.Upgrade})
+    }
+    useEffect(() => {
+        setInterval(() => {
+            setMoney(prevMoney => prevMoney + (state.owned * state.productionRate))
+        }, miningSpeed)
+    }, [state])
     return (
         <div className="worker">
-            <h2 className="worker-name">{worker.name}</h2>
-            <div className={ visible ? "visible" : "hidden"}>
-                <h2>Owned: <span>{owned}</span></h2>
-                <h2>Cost: <span>{cost * multiplier}</span>$</h2>
-                <h2>Production Rate: <span>{productionRate}</span>$</h2>
-                <h2>Upgrade Cost: <span>{productionRateUpgradeCost}</span></h2>
-                <button onClick={() => buyWorker()}>Buy <span>{multiplier}</span>?</button>
-                <button onClick={() => upgradeWorker()}>Upgrade?</button>
+            <h2 className="worker-name">{state.name}</h2>
+             <div className={ visible ? "visible" : "hidden"}>
+                <h2>Owned: <span>{state.owned}</span></h2>
+                <h2>Cost: <span>{state.cost * multiplier}</span>$</h2>
+                <h2>Production Rate: <span>{state.productionRate}</span>$</h2>
+                <h2>Upgrade Cost: <span>{state.productionRateUpgradeCost}</span></h2>
+                <button onClick={() => BuyWorker()}>Buy <span>{multiplier}</span>?</button>
+                <button onClick={() => UpgradeWorker()}>Upgrade?</button>
             </div>
             <div>
                 <button 
