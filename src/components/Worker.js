@@ -50,7 +50,7 @@ export default function Worker({worker, money, setMoney, multiplier}) {
         setInterval(() => {
             setMoney(prevMoney => prevMoney + (state.owned * state.productionRate))
         }, miningSpeed)
-    }, [state])
+    }, [state, setMoney])
     return (
         <div className="worker">
             <h2 className="worker-name">{state.name}</h2>
