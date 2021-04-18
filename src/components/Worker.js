@@ -18,6 +18,11 @@ function reducer(state, action) {
                 owned: state.owned + action.payload,
                 cost: state.cost + action.payload, 
             }
+        case ACTIONS.Mining:
+            // 
+            return {
+                ...state,
+            }
         default: return state
     }
 }
@@ -25,7 +30,7 @@ function reducer(state, action) {
 export default function Worker({worker, money, setMoney, multiplier}) {
     // set default state to worker and pass reducer function
     const [state, dispatch] = useReducer(reducer, worker);
-    const miningSpeed = 10000;
+    const miningSpeed = 5000;
     const [visible, setVisible] = useState(true);
     const reveal = () => {
         setVisible(prevVisible => !prevVisible)
@@ -45,7 +50,7 @@ export default function Worker({worker, money, setMoney, multiplier}) {
         setInterval(() => {
             setMoney(prevMoney => prevMoney + (state.owned * state.productionRate))
         }, miningSpeed)
-    }, [])
+    }, [state])
     return (
         <div className="worker">
             <h2 className="worker-name">{state.name}</h2>
