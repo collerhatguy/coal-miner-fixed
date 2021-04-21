@@ -5,6 +5,7 @@
 // 4. ids
 // 5. classes
 // 6. animation
+// 7. media queries
 
 // 1. variables
 @import "./variables";
@@ -41,5 +42,16 @@
     }
     to {
         transform: scaleY(1);
+    }
+}
+
+// 7. media queries
+@media only screen and (max-width: 660px) {
+    #worker-list{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
     }
 }
