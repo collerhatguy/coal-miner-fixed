@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/coal-miner-fixed/static/css/main.8309fee5.chunk.css",
-    "main.js": "/coal-miner-fixed/static/js/main.7046ea3c.chunk.js",
-    "main.js.map": "/coal-miner-fixed/static/js/main.7046ea3c.chunk.js.map",
+    "main.js": "/coal-miner-fixed/static/js/main.b4690a9b.chunk.js",
+    "main.js.map": "/coal-miner-fixed/static/js/main.b4690a9b.chunk.js.map",
     "runtime-main.js": "/coal-miner-fixed/static/js/runtime-main.88228a2b.js",
     "runtime-main.js.map": "/coal-miner-fixed/static/js/runtime-main.88228a2b.js.map",
     "static/js/2.ca85566d.chunk.js": "/coal-miner-fixed/static/js/2.ca85566d.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.88228a2b.js",
     "static/js/2.ca85566d.chunk.js",
     "static/css/main.8309fee5.chunk.css",
-    "static/js/main.7046ea3c.chunk.js"
+    "static/js/main.b4690a9b.chunk.js"
   ]
 }
