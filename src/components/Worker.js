@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useReducer} from 'react';
+import React, {useEffect, useState, useReducer, useCallback} from 'react';
 const ACTIONS = {
     Upgrade: "UpgradeWorker",
     Buy: "BuyWorker",
@@ -30,22 +30,26 @@ function reducer(state, action) {
 export default function Worker({worker, money, setMoney, multiplier}) {
     // set default state to worker and pass reducer function
     const [state, dispatch] = useReducer(reducer, worker);
-    const miningSpeed = 5000;
+    const miningSpeed = 3000;
     const [visible, setVisible] = useState(true);
-    const reveal = () => {
+
+    const reveal = useCallback(() => {
         setVisible(prevVisible => !prevVisible)
-    }
-    const BuyWorker = () => {
+    }, [])
+
+    const BuyWorker = useCallback(() => {
         const totalCost = state.cost * multiplier;
         if (money < totalCost) return;
         setMoney(prevMoney => prevMoney - totalCost);
         dispatch({type: ACTIONS.Buy, payload: multiplier})
-    }
-    const UpgradeWorker = () => {
+    }, [state, multiplier, money])
+
+    const UpgradeWorker = useCallback(() => {
         if (money < state.productionRateUpgradeCost) return;
         setMoney(prevMoney => prevMoney - state.productionRateUpgradeCost);
         dispatch({type: ACTIONS.Upgrade})
-    }
+    }, [state, money])
+
     useEffect(() => {
         setInterval(() => {
             setMoney(prevMoney => prevMoney + (state.owned * state.productionRate))
