@@ -1,4 +1,6 @@
-import React, {useEffect, useState, useReducer, useCallback} from 'react';
+import React, {useEffect, useReducer, useCallback} from 'react';
+import useVisible from "../hooks/useVisible";
+
 const ACTIONS = {
     Upgrade: "UpgradeWorker",
     Buy: "BuyWorker",
@@ -30,12 +32,9 @@ function reducer(state, action) {
 export default function Worker({worker, money, setMoney, multiplier}) {
     // set default state to worker and pass reducer function
     const [state, dispatch] = useReducer(reducer, worker);
+    const [workerVisibility, reveal] = useVisible();
     const miningSpeed = 3000;
-    const [visible, setVisible] = useState(true);
 
-    const reveal = useCallback(() => {
-        setVisible(prevVisible => !prevVisible)
-    }, [])
 
     const BuyWorker = useCallback(() => {
         const totalCost = state.cost * multiplier;
@@ -54,11 +53,13 @@ export default function Worker({worker, money, setMoney, multiplier}) {
         setInterval(() => {
             setMoney(prevMoney => prevMoney + (state.owned * state.productionRate))
         }, miningSpeed)
-    }, [state, setMoney])
+    }, [state, money])
     return (
         <div className="worker">
             <h2 className="worker-name">{state.name}</h2>
-             <div className={ visible ? "visible" : "hidden"}>
+             <div
+                ref={workerVisibility} 
+                >
                 <h2>Owned: <span>{state.owned}</span></h2>
                 <h2>Cost: <span>{state.cost * multiplier}</span>$</h2>
                 <h2>Production Rate: <span>{state.productionRate}</span>$</h2>
@@ -69,21 +70,9 @@ export default function Worker({worker, money, setMoney, multiplier}) {
             <div>
                 <button 
                     tabIndex="0"
-                    style={{
-                        display: visible ? "block" : "none",
-                    }}
                     onClick={() => reveal()}
                 >
-                    Minimize
-                </button>
-                <button 
-                    tabIndex="0"
-                    style={{
-                        display: visible ? "none" : "block",
-                    }}
-                    onClick={() => reveal()}
-                >
-                    Reveal
+                    Visibility
                 </button>
             </div>
         </div>
