@@ -15,7 +15,7 @@ class Worker {
       this.CURRENT_PRODUCTION_RATE_UPGRADE_COST_LOCAL_STORAGE_KEY = `Coalminer.${name}CurrentProductionRateUpgradeCost`;
       
       this.name = name;
-      this.owned = 0;
+      this.owned = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || 0;
       this.cost = defaultCost;
       this.productionRate = defaultProductionRate;
       this.productionRateUpgradeCost = defaultProductionRateUpgradeCost;
