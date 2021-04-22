@@ -16,9 +16,9 @@ class Worker {
       
       this.name = name;
       this.owned = JSON.parse(localStorage.getItem(this.OWNED_LOCAL_STORAGE_KEY)) || 0;
-      this.cost = defaultCost;
-      this.productionRate = defaultProductionRate;
-      this.productionRateUpgradeCost = defaultProductionRateUpgradeCost;
+      this.cost =  JSON.parse(localStorage.getItem(this.COST_LOCAL_STORAGE_KEY)) || defaultCost;
+      this.productionRate = JSON.parse(localStorage.getItem(this.CURRENT_PPRODUCTION_RATE_LOCAL_STORAGE_KEY)) || defaultProductionRate;
+      this.productionRateUpgradeCost = JSON.parse(localStorage.getItem(this.CURRENT_PRODUCTION_RATE_UPGRADE_COST_LOCAL_STORAGE_KEY)) || defaultProductionRateUpgradeCost;
       this.saveFiles = [
         {
           key: this.OWNED_LOCAL_STORAGE_KEY,
