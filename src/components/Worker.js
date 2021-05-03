@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import useVisible from "../hooks/useVisible";
 import useWorker from "../hooks/useWorker";
 
@@ -6,8 +6,13 @@ import useWorker from "../hooks/useWorker";
 export default function Worker({worker, money, setMoney, multiplier}) {
     const [workerVisibility, reveal] = useVisible();
     const [workerState, BuyWorker, UpgradeWorker] = useWorker(worker, setMoney, money, multiplier);
+    const [affordable, setAffordable] = useState(false)
+    useEffect(() => {
+        if (worker.cost <= money) setAffordable(true); 
+    }, [money])
     return (
-        <div className="worker">
+        <div className="worker"
+            style={{display: affordable ? "block" : "none"}}>
             <h2 className="worker-name">{workerState.name}</h2>
              <div
                 ref={workerVisibility} 
