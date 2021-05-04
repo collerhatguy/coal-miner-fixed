@@ -11,8 +11,8 @@ export default function Worker({worker, money, setMoney, multiplier}) {
         if (worker.cost <= money) setAffordable(true); 
     }, [money])
     return (
-        <div className="worker"
-            style={{display: affordable ? "block" : "none"}}>
+        <div className={affordable ? "worker" : "unaffordable"}
+            >
             <h2 className="worker-name">{workerState.name}</h2>
              <div
                 ref={workerVisibility} 

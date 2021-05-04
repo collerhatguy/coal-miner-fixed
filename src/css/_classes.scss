@@ -16,6 +16,9 @@
     height: min-content;
     animation: grow 1000ms linear forwards;
 }
+.unaffordable {
+    opacity: .05;
+}
 .hidden {
     display: none;
 }
