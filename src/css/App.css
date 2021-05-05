@@ -55,6 +55,10 @@ span {
   color: #ff3333;
 }
 
+progress {
+  width: 90%;
+}
+
 #multiplierContainer {
   font-size: 1.85414rem;
   background-color: #ff3333;

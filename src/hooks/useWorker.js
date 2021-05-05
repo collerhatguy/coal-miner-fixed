@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useCallback } from "react";
+import { useReducer, useEffect, useState, useCallback } from "react";
 
 const ACTIONS = {
     Upgrade: "UpgradeWorker",
@@ -25,6 +25,8 @@ function reducer(state, action) {
 export default function useWorker(worker, setMoney, money, multiplier) {
     const [state, dispatch] = useReducer(reducer, worker);
     const miningSpeed = 3000;
+    const [progress, setProgress] = useState(0);
+    const [lastMinedTime, setLastMinedTime] = useState();
 
     const BuyWorker = useCallback(() => {
         const totalCost = state.cost * multiplier;
@@ -40,9 +42,19 @@ export default function useWorker(worker, setMoney, money, multiplier) {
     }, [state, money])
 
     useEffect(() => {
-        setInterval(() => {
-            setMoney(prevMoney => prevMoney + (state.owned * state.productionRate))
+        const mining = setInterval(() => {
+            setMoney(prevMoney => prevMoney + (state.owned * state.productionRate));
+            setLastMinedTime(Date.now());
+            console.log(lastMinedTime);
         }, miningSpeed)
     }, [state])
-    return [state, BuyWorker, UpgradeWorker];
+    useEffect(() => {
+        const progressSetting = setInterval(() => {
+            setProgress(Math.floor((Date.now() - lastMinedTime) / miningSpeed))
+        }, 1000)
+    }, [])
+    useEffect(() => {
+        // console.log(progress, lastMinedTime);
+    }, [progress, lastMinedTime])
+    return [state, BuyWorker, UpgradeWorker, progress];
 }
