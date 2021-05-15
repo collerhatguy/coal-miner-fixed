@@ -4,7 +4,7 @@ import useWorker from "../hooks/useWorker";
 
 
 export default function Worker({worker, money, setMoney, multiplier}) {
-    const [workerVisibility, reveal] = useVisible();
+    const [workerVisibility, visible, reveal] = useVisible();
     const [workerState, BuyWorker, UpgradeWorker] = useWorker(worker, setMoney, money, multiplier);
     const [affordable, setAffordable] = useState(false)
     useEffect(() => {
@@ -29,7 +29,7 @@ export default function Worker({worker, money, setMoney, multiplier}) {
                     tabIndex="0"
                     onClick={() => reveal()}
                 >
-                    Visibility
+                    {visible ? "Hide?" : "Reveal?"}
                 </button>
             </div>
         </div>

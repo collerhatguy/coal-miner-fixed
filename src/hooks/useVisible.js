@@ -13,5 +13,5 @@ export default function useVisible() {
         if (!visible) element.current.style.display = "none";
         console.log(element)
     }, [visible]);
-    return [element, reveal];
+    return [element, visible, reveal];
 }
