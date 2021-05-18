@@ -17,7 +17,6 @@ function App() {
 
   return (
     <>
-      <h1>Gold Miners</h1>
       <h2>Current Money: {money}</h2>
       <WorkerList money={money} setMoney={setMoney} multiplier={multiplier} />
       <MultiplierList setMultiplier={setMultiplier} />

@@ -25,6 +25,11 @@
     font-size: $max-font / 1.618;
     background-color: $tertiary-color-300;
     color: $primary-color;
+    fieldset {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
 #worker-list {
     display: flex;

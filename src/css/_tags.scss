@@ -1,7 +1,9 @@
 body {
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
     background-color: $primary-color;
     color: $secondary-color;
 }
