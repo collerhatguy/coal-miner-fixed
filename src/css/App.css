@@ -60,7 +60,7 @@ input {
 span {
   padding: 0;
   margin: 0;
-  color: #ffeb33;
+  color: #ccb800;
 }
 
 #multiplierContainer {
@@ -168,10 +168,8 @@ span {
             align-items: center;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+        -ms-flex-flow: column wrap;
+            flex-flow: column wrap;
   }
 }
 /*# sourceMappingURL=App.css.map */
