@@ -40,9 +40,12 @@ export default function useWorker(worker, setMoney, money, multiplier) {
     }, [state, money])
 
     useEffect(() => {
+        console.log("mining")
         setInterval(() => {
+            console.log("mined")
+            console.log(state.owned )
             setMoney(prevMoney => prevMoney + (state.owned * state.productionRate))
         }, miningSpeed)
-    }, [state])
+    }, [])
     return [state, BuyWorker, UpgradeWorker];
 }

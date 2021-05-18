@@ -26,23 +26,23 @@ h2, button {
 }
 
 button {
-  background-color: #ff9999;
-  color: #660000;
-  border: #660000 solid 0.1em;
+  background-color: #fff599;
+  color: #665c00;
+  border: #665c00 solid 0.1em;
   -webkit-transition-duration: 300ms;
           transition-duration: 300ms;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #660000;
-  color: #ff9999;
+  background-color: #665c00;
+  color: #fff599;
 }
 
 button:focus {
   outline: none;
-  background-color: #660000;
-  color: #ff9999;
+  background-color: #665c00;
+  color: #fff599;
 }
 
 input {
@@ -52,12 +52,12 @@ input {
 span {
   padding: 0;
   margin: 0;
-  color: #ff3333;
+  color: #ffeb33;
 }
 
 #multiplierContainer {
   font-size: 1.85414rem;
-  background-color: #ff3333;
+  background-color: #ccb800;
   color: white;
 }
 
@@ -74,13 +74,13 @@ span {
 }
 
 .worker {
-  border: solid 0.2em #ff3333;
+  border: solid 0.2em #ffeb33;
   text-align: center;
 }
 
 .worker-name {
-  background-color: #660000;
-  color: #ff9999;
+  background-color: #665c00;
+  color: #fff599;
   width: 90%;
 }
 
