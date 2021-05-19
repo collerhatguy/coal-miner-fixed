@@ -45,21 +45,21 @@ class Worker {
       })
     }
 }
-class acheivement {
-  constructor(requirements, name, reward, checker) {
-    this.requirements = requirements;
-    this.name = name;
-    this.reward = reward;
-    this.checker = checker;
-    this.acheived = false;
-  }
-}
-const check = (workers) => {
-  if (workers.some(worker => {worker.owned === 0})) return false;
-  return true; 
-}
-const oneOfEach = new acheivement("Get one of every worker", "One of Each", 100, check)
-console.log(oneOfEach);
+// class acheivement {
+//   constructor(requirements, name, reward, checker) {
+//     this.requirements = requirements;
+//     this.name = name;
+//     this.reward = reward;
+//     this.checker = checker;
+//     this.acheived = false;
+//   }
+// }
+// const check = (workers) => {
+//   if (workers.some(worker => {worker.owned === 0})) return false;
+//   return true; 
+// }
+// const oneOfEach = new acheivement("Get one of every worker", "One of Each", 100, check)
+// console.log(oneOfEach);
 
 const miners = new Worker(10, 1, 100, "Miners")
 const drills = new Worker(100, 2, 1000, "Drills")
