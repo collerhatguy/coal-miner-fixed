@@ -24,7 +24,7 @@ function reducer(state, action) {
     }
 }
 export default function useWorker(worker, setMoney, money, multiplier) {
-    const [state, dispatch] = useReducer(reducer, {...worker, level: 0});
+    const [state, dispatch] = useReducer(reducer, worker);
     const miningSpeed = 3000;
 
     const BuyWorker = useCallback(() => {
