@@ -45,6 +45,13 @@ class Worker {
       })
     }
 }
+class acheivement {
+  constructor(condition, name, reward) {
+    this.condition = condition;
+    this.name = name;
+    this.reward = reward;
+  }
+}
 
 const miners = new Worker(10, 1, 100, "Miners")
 const drills = new Worker(100, 2, 1000, "Drills")

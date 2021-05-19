@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import AcheivementList from "./components/AcheivementList";
 import WorkerList from "./components/WorkerList"
+import MultiplierList from "./components/MultiplierList";
 
 import "./css/App.css";
-import MultiplierList from "./components/MultiplierList";
 
 function App() {
   // set everything back to default values based on local save
@@ -18,6 +19,7 @@ function App() {
   return (
     <>
       <h2>Current Money: {money}</h2>
+      <AcheivementList />
       <WorkerList money={money} setMoney={setMoney} multiplier={multiplier} />
       <MultiplierList setMultiplier={setMultiplier} />
     </>
