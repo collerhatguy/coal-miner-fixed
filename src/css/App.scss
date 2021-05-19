@@ -31,12 +31,19 @@
         align-items: center;
     }
 }
-#worker-list {
+#worker-list, #acheivement-list {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: center;
 }
-
+#acheivement-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column wrap;
+}
 // 5. classes
 @import "./classes";
 

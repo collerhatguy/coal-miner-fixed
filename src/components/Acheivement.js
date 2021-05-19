@@ -10,8 +10,10 @@ export default function Acheivement({acheivement}) {
             }} 
             className="acheivement" >
             <h3>{acheivement.name}</h3>
-            <p>{acheivement.requirements}</p>
-            <span>Reward: {acheivement.reward}$</span>
+            <div className="acheivement-text">
+                <p>{acheivement.requirements}</p>
+                <span>Reward: {acheivement.reward}$</span>
+            </div>
         </div>
     )
 }

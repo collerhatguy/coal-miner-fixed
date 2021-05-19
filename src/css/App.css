@@ -81,7 +81,8 @@ span {
           align-items: center;
 }
 
-#worker-list {
+#worker-list, #acheivement-list {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -91,6 +92,23 @@ span {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  text-align: center;
+}
+
+#acheivement-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column wrap;
+          flex-flow: column wrap;
 }
 
 .worker {
@@ -131,6 +149,20 @@ span {
 
 .hidden {
   display: none;
+}
+
+.acheivement .acheivement-text {
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  opacity: 0;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+}
+
+.acheivement:hover .acheivement-text {
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+  opacity: 1;
 }
 
 @-webkit-keyframes grow {

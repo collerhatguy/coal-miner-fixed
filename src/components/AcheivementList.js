@@ -1,8 +1,6 @@
-import React, {useReducer} from 'react';
+import React from 'react';
 import Acheivement from "./Acheivement";
-function reducer(state, action) {
 
-}
 const acheivements = [
     {
         name: "One of Each",
@@ -13,13 +11,14 @@ const acheivements = [
 ]
     
 export default function AcheivementList() {
-    const [state, dispatch] = useReducer(reducer, acheivements)
     return (
-        <div id="acheivement-list">
+        <div id="acheivement-container">
             <h2>Acheivements</h2>
-            {acheivements.map(acheivement => {
-                return <Acheivement acheivement={acheivement} />
-            })}
+            <div id="acheivement-list">
+                {acheivements.map(acheivement => {
+                    return <Acheivement acheivement={acheivement} />
+                })}
+            </div>
         </div>
     )
 }
