@@ -11,7 +11,8 @@ function reducer(state, action) {
             return {
                 ...state,
                 productionRate: state.productionRate + 1, 
-                productionRateUpgradeCost: state.productionRateUpgradeCost * 2, 
+                productionRateUpgradeCost: state.productionRateUpgradeCost * 2,
+                level: state.level + 1, 
             }
         case ACTIONS.Buy:
             return {
@@ -23,7 +24,7 @@ function reducer(state, action) {
     }
 }
 export default function useWorker(worker, setMoney, money, multiplier) {
-    const [state, dispatch] = useReducer(reducer, worker);
+    const [state, dispatch] = useReducer(reducer, {...worker, level: 0});
     const miningSpeed = 3000;
 
     const BuyWorker = useCallback(() => {
@@ -46,6 +47,6 @@ export default function useWorker(worker, setMoney, money, multiplier) {
             console.log(state.owned )
             setMoney(prevMoney => prevMoney + (state.owned * state.productionRate))
         }, miningSpeed)
-    }, [])
+    }, [state])
     return [state, BuyWorker, UpgradeWorker];
 }

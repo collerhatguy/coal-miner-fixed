@@ -21,6 +21,7 @@ export default function Worker({worker, money, setMoney, multiplier}) {
                 <h2>Cost: <span>{workerState.cost * multiplier}</span>$</h2>
                 <h2>Production Rate: <span>{workerState.productionRate}</span>$</h2>
                 <h2>Upgrade Cost: <span>{workerState.productionRateUpgradeCost}</span></h2>
+                <h2>Level: <span>{workerState.level}</span></h2>
                 <button onClick={() => BuyWorker()}>Buy <span>{multiplier}</span>?</button>
                 <button onClick={() => UpgradeWorker()}>Upgrade?</button>
             </div>
