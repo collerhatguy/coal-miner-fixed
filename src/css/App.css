@@ -151,12 +151,20 @@ span {
   display: none;
 }
 
+.acheivement {
+  text-align: center;
+}
+
 .acheivement .acheivement-text {
   -webkit-transform: translateY(-100%);
           transform: translateY(-100%);
   opacity: 0;
   -webkit-transition-duration: 300ms;
           transition-duration: 300ms;
+}
+
+.acheivement .acheivement-text span {
+  width: 100%;
 }
 
 .acheivement:hover .acheivement-text {

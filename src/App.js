@@ -19,7 +19,7 @@ function App() {
   return (
     <>
       <h2>Current Money: {money}</h2>
-      <AcheivementList />
+      <AcheivementList setMoney={setMoney} />
       <WorkerList money={money} setMoney={setMoney} multiplier={multiplier} />
       <MultiplierList setMultiplier={setMultiplier} />
     </>

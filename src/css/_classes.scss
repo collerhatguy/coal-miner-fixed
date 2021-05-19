@@ -23,10 +23,14 @@
     display: none;
 }
 .acheivement {
+    text-align: center;
     .acheivement-text {
         transform: translateY(-100%);
         opacity: 0;
         transition-duration: 300ms;
+        span {
+            width: 100%;
+        }
     }
     &:hover .acheivement-text {
         transform: translateY(0%);

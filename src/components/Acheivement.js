@@ -1,6 +1,7 @@
 import React from 'react'
 
-export default function Acheivement({acheivement}) {
+export default function Acheivement({acheivement, setMoney}) {
+    if (acheivement.acheived) setMoney(prevMoney => prevMoney + acheivement.reward)
     return (
         <div
             style={acheivement.acheived ? {

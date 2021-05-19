@@ -10,13 +10,13 @@ const acheivements = [
     }
 ]
     
-export default function AcheivementList() {
+export default function AcheivementList({setMoney}) {
     return (
         <div id="acheivement-container">
             <h2>Acheivements</h2>
             <div id="acheivement-list">
                 {acheivements.map(acheivement => {
-                    return <Acheivement acheivement={acheivement} />
+                    return <Acheivement acheivement={acheivement} setMoney={setMoney} />
                 })}
             </div>
         </div>
