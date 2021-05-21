@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import WorkerList from "./components/WorkerList"
+import WorkerList from "./components/WorkerList";
 
 import "./css/App.css";
 import MultiplierList from "./components/MultiplierList";
