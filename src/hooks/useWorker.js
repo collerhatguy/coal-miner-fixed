@@ -46,6 +46,6 @@ export default function useWorker(worker, setMoney, money, multiplier) {
             console.log(state.owned)
             setMoney(prevMoney => prevMoney + (state.owned * state.productionRate))
         }, miningSpeed)
-    }, [])
+    }, [state])
     return [state, BuyWorker, UpgradeWorker];
 }
