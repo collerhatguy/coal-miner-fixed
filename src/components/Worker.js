@@ -17,6 +17,7 @@ export default function Worker({worker, money, setMoney, multiplier}) {
              <div
                 ref={workerVisibility} 
                 >
+                <img src={workerState.img} />
                 <h2>Owned: <span>{workerState.owned}</span></h2>
                 <h2>Cost: <span>{workerState.cost * multiplier}</span>$</h2>
                 <h2>Production Rate: <span>{workerState.productionRate}</span>$</h2>
