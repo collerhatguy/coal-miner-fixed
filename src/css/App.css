@@ -133,10 +133,17 @@ span {
 .unaffordable {
   opacity: .05;
   text-align: center;
+  border: solid 0.2em #ffeb33;
 }
 
 .hidden {
   display: none;
+}
+
+@media only screen and (max-width: 375px) {
+  .worker, .unaffordable, body {
+    width: 80vw;
+  }
 }
 
 @-webkit-keyframes grow {
