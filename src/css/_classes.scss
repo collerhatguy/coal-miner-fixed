@@ -2,6 +2,7 @@
 .worker {
     border: solid .2em $tertiary-color-200;
     text-align: center;
+
 }
 .worker-name {
     background-color: $tertiary-color-400;
@@ -22,6 +23,7 @@
 }
 .unaffordable {
     opacity: .05;
+    text-align: center;
 }
 .hidden {
     display: none;
