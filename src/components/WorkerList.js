@@ -4,7 +4,7 @@ import Workers from "../misc";
 
 export default function WorkerList({ money, setMoney, multiplier}) {
     return (
-        <div id="worker-list">
+        <section id="worker-list">
             {Workers.map((worker, index) => {
                 return <Worker 
                             worker={worker} 
@@ -14,6 +14,6 @@ export default function WorkerList({ money, setMoney, multiplier}) {
                             key={index} 
                         />
             })}
-        </div>
+        </section>
     )
 }

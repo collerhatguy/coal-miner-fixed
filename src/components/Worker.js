@@ -13,18 +13,18 @@ export default function Worker({worker, money, setMoney, multiplier}) {
     return (
         <div className={`worker ${affordable ? "" : "unaffordable"}`}
             >
-            <h2 className="worker-name">{workerState.name}</h2>
+            <h3 className="worker-name">{workerState.name}</h3>
              <div
                 ref={workerVisibility} 
                 >
                 <img
                     className="worker-image" 
                     src={workerState.img} />
-                <h2>Owned: <span>{workerState.owned}</span></h2>
-                <h2>Cost: <span>{workerState.cost * multiplier}</span>$</h2>
-                <h2>Production Rate: <span>{workerState.productionRate}</span>$</h2>
-                <h2>Upgrade Cost: <span>{workerState.productionRateUpgradeCost}</span></h2>
-                <h2>Level: <span>{workerState.level}</span></h2>
+                <h4>Owned: <span>{workerState.owned}</span></h4>
+                <h4>Cost: <span>{workerState.cost * multiplier}</span>$</h4>
+                <h4>Production Rate: <span>{workerState.productionRate}</span>$</h4>
+                <h4>Upgrade Cost: <span>{workerState.productionRateUpgradeCost}</span></h4>
+                <h4>Level: <span>{workerState.level}</span></h4>
                 <button onClick={() => BuyWorker()}>Buy <span>{multiplier}</span>?</button>
                 <button onClick={() => UpgradeWorker()}>Upgrade?</button>
             </div>
