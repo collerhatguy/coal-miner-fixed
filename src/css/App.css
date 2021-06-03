@@ -132,8 +132,6 @@ span {
 
 .unaffordable {
   opacity: .05;
-  text-align: center;
-  border: solid 0.2em #ffeb33;
 }
 
 .hidden {

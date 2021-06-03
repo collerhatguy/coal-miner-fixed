@@ -11,7 +11,7 @@ export default function Worker({worker, money, setMoney, multiplier}) {
         if (worker.cost <= money) setAffordable(true); 
     }, [money])
     return (
-        <div className={affordable ? "worker" : "unaffordable"}
+        <div className={`worker ${affordable ? "" : "unaffordable"}`}
             >
             <h2 className="worker-name">{workerState.name}</h2>
              <div
