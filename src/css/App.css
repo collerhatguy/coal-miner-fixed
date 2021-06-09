@@ -1,12 +1,65 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
 * {
-  padding: .2em;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: .1em auto;
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
+}
+
+html {
+  font-size: 62.5%;
 }
 
 body {
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+body, main {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -23,31 +76,28 @@ body {
           flex-flow: column wrap;
   background-color: white;
   color: black;
+  text-align: center;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 4rem;
 }
 
 h2, button {
-  font-size: 1.85414rem;
+  font-size: 3rem;
 }
 
 button {
+  cursor: pointer;
   background-color: #fff599;
   color: #665c00;
-  border: #665c00 solid 0.1em;
+  border: #665c00 solid 0.1rem;
   -webkit-transition-duration: 300ms;
           transition-duration: 300ms;
-  cursor: pointer;
+  padding: 1rem;
 }
 
-button:hover {
-  background-color: #665c00;
-  color: #fff599;
-}
-
-button:focus {
+button:focus, button:hover {
   outline: none;
   background-color: #665c00;
   color: #fff599;
@@ -58,27 +108,30 @@ input {
 }
 
 span {
-  padding: 0;
-  margin: 0;
   color: #ccb800;
 }
 
 #multiplierContainer {
-  font-size: 1.85414rem;
+  font-size: 3rem;
   background-color: #ccb800;
   color: white;
+  text-align: left;
+  width: 50%;
+  margin: 1rem;
+  padding: 1rem;
 }
 
 #multiplierContainer fieldset {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 1rem;
 }
 
 #worker-list {
@@ -94,8 +147,24 @@ span {
 }
 
 .worker {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   border: solid 0.2em #ffeb33;
   text-align: center;
+  font-size: 3rem;
+  margin: 1rem;
+  padding: 1rem;
 }
 
 .worker-name {
@@ -131,7 +200,7 @@ span {
 }
 
 .unaffordable {
-  opacity: .05;
+  opacity: .09;
 }
 
 .hidden {
@@ -140,7 +209,7 @@ span {
 
 @media only screen and (max-width: 375px) {
   .worker, .unaffordable, body {
-    width: 80vw;
+    width: 80%;
   }
 }
 

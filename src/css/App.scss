@@ -11,24 +11,25 @@
 @import "./variables";
 
 // 2. default styling
-* {
-    padding: .2em;
-    width: fit-content;
-    margin: .1em auto;
-}
+@import "./reset";
 
 // 3. tags
 @import "./tags";
 
 // 4. ids
 #multiplierContainer {
-    font-size: $max-font / 1.618;
+    font-size: $base-font * 3;
     background-color: $tertiary-color-300;
     color: $primary-color;
+    text-align: left;
+    width: 50%;
+    margin: 1rem;
+    padding: 1rem;
     fieldset {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-evenly;
         align-items: center;
+        padding: 1rem;
     }
 }
 #worker-list {
