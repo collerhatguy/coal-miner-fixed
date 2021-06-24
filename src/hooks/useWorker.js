@@ -26,8 +26,12 @@ function reducer(state, action) {
 export default function useWorker(worker, setMoney, money, multiplier) {
     const [state, dispatch] = useReducer(reducer, worker);
     const miningSpeed = 3000;
-    const [mining, setMining] = useState(0);
+    const progressSpeed = 50;
+    const [miningTrigger, setMiningTrigger] = useState(0);
+    const [progressTrigger, setProgressTrigger] = useState(0);
     const [goldMined, setGoldMined] = useState(worker.owned * worker.productionRate);
+    const [lastMinedTime, setLastMinedTime] = useState(Date.now());
+    const [progress, setProgress] = useState(0);
 
     const BuyWorker = useCallback(() => {
         const totalCost = state.cost * multiplier;
@@ -44,17 +48,25 @@ export default function useWorker(worker, setMoney, money, multiplier) {
 
     useEffect(() => {
         setInterval(() => {
-            setMining(prevMining => prevMining + 1)
+            setMiningTrigger(prevMining => prevMining + 1)
         }, miningSpeed)
+        setInterval(() => {
+            setProgressTrigger(prevProgress => prevProgress + 1)
+        }, progressSpeed)
     }, []);
 
     useEffect(() => {
-        setMoney(prevMoney => prevMoney + goldMined)
-    }, [mining]);
+        setMoney(prevMoney => prevMoney + goldMined);
+        setLastMinedTime(Date.now());
+    }, [miningTrigger]);
+
+    useEffect(() => {
+        setProgress(Math.floor(((Date.now() - lastMinedTime) / miningSpeed) * 100));
+    }, [progressTrigger])
 
     useEffect(() => {
         setGoldMined(state.owned * state.productionRate);
     }, [state]);
     
-    return [state, BuyWorker, UpgradeWorker];
+    return [state, progress, BuyWorker, UpgradeWorker];
 }

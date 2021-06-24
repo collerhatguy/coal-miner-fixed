@@ -5,7 +5,7 @@ import useWorker from "../hooks/useWorker";
 
 export default function Worker({worker, money, setMoney, multiplier}) {
     const [workerVisibility, visible, reveal] = useVisible();
-    const [workerState, BuyWorker, UpgradeWorker] = useWorker(worker, setMoney, money, multiplier);
+    const [workerState, progress, BuyWorker, UpgradeWorker] = useWorker(worker, setMoney, money, multiplier);
     const [affordable, setAffordable] = useState(false)
     useEffect(() => {
         if (worker.cost <= money) setAffordable(true); 
@@ -25,6 +25,7 @@ export default function Worker({worker, money, setMoney, multiplier}) {
                 <h4>Production Rate: <span>{workerState.productionRate}</span>$</h4>
                 <h4>Upgrade Cost: <span>{workerState.productionRateUpgradeCost}</span>$</h4>
                 <h4>Level: <span>{workerState.level}</span></h4>
+                <progress max={100} value={progress} />
                 <button onClick={() => BuyWorker()}>Buy <span>{multiplier}</span>?</button>
                 <button onClick={() => UpgradeWorker()}>Upgrade?</button>
             </div>
