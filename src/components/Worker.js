@@ -17,6 +17,7 @@ export default function Worker({worker, money, setMoney, multiplier}) {
              <div
                 ref={workerVisibility} 
                 >
+                <progress max={100} value={progress} />
                 <img
                     className="worker-image" 
                     src={workerState.img} />
@@ -25,7 +26,6 @@ export default function Worker({worker, money, setMoney, multiplier}) {
                 <h4>Production Rate: <span>{workerState.productionRate}</span>$</h4>
                 <h4>Upgrade Cost: <span>{workerState.productionRateUpgradeCost}</span>$</h4>
                 <h4>Level: <span>{workerState.level}</span></h4>
-                <progress max={100} value={progress} />
                 <button onClick={() => BuyWorker()}>Buy <span>{multiplier}</span>?</button>
                 <button onClick={() => UpgradeWorker()}>Upgrade?</button>
             </div>

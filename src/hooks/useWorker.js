@@ -61,6 +61,7 @@ export default function useWorker(worker, setMoney, money, multiplier) {
     }, [miningTrigger]);
 
     useEffect(() => {
+        if (state.owned === 0) return;
         setProgress(Math.floor(((Date.now() - lastMinedTime) / miningSpeed) * 100));
     }, [progressTrigger])
 

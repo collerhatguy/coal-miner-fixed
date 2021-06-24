@@ -95,6 +95,11 @@ button {
   -webkit-transition-duration: 300ms;
           transition-duration: 300ms;
   padding: 1rem;
+  margin: 1rem;
+  width: 70%;
+  min-width: -webkit-min-content;
+  min-width: -moz-min-content;
+  min-width: min-content;
 }
 
 button:focus, button:hover {
@@ -109,6 +114,21 @@ input {
 
 span {
   color: #ccb800;
+}
+
+progress {
+  margin: 1rem;
+  border-radius: 0px;
+  width: 90%;
+}
+
+progress::-webkit-pregress-bar, progress::-moz-progress-bar {
+  background-color: #ffeb33;
+  border: #665c00;
+}
+
+progress::-webkit-progress-value {
+  background-color: #ffeb33;
 }
 
 #multiplierContainer {
