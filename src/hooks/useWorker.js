@@ -47,11 +47,14 @@ export default function useWorker(worker, setMoney, money, multiplier) {
             setMining(prevMining => prevMining + 1)
         }, miningSpeed)
     }, []);
+
     useEffect(() => {
         setMoney(prevMoney => prevMoney + goldMined)
     }, [mining]);
+
     useEffect(() => {
         setGoldMined(state.owned * state.productionRate);
     }, [state]);
+    
     return [state, BuyWorker, UpgradeWorker];
 }
