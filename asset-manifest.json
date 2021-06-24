@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/coal-miner-fixed/static/css/main.2fcb6366.chunk.css",
-    "main.js": "/coal-miner-fixed/static/js/main.b091787c.chunk.js",
-    "main.js.map": "/coal-miner-fixed/static/js/main.b091787c.chunk.js.map",
+    "main.css": "/coal-miner-fixed/static/css/main.784c9ea3.chunk.css",
+    "main.js": "/coal-miner-fixed/static/js/main.bb76111d.chunk.js",
+    "main.js.map": "/coal-miner-fixed/static/js/main.bb76111d.chunk.js.map",
     "runtime-main.js": "/coal-miner-fixed/static/js/runtime-main.88228a2b.js",
     "runtime-main.js.map": "/coal-miner-fixed/static/js/runtime-main.88228a2b.js.map",
     "static/js/2.47418f7d.chunk.js": "/coal-miner-fixed/static/js/2.47418f7d.chunk.js",
     "static/js/2.47418f7d.chunk.js.map": "/coal-miner-fixed/static/js/2.47418f7d.chunk.js.map",
     "index.html": "/coal-miner-fixed/index.html",
-    "static/css/main.2fcb6366.chunk.css.map": "/coal-miner-fixed/static/css/main.2fcb6366.chunk.css.map",
+    "static/css/main.784c9ea3.chunk.css.map": "/coal-miner-fixed/static/css/main.784c9ea3.chunk.css.map",
     "static/js/2.47418f7d.chunk.js.LICENSE.txt": "/coal-miner-fixed/static/js/2.47418f7d.chunk.js.LICENSE.txt",
     "static/media/drill.1a13da94.png": "/coal-miner-fixed/static/media/drill.1a13da94.png",
     "static/media/monky.16a653ef.png": "/coal-miner-fixed/static/media/monky.16a653ef.png",
@@ -17,7 +17,7 @@
   "entrypoints": [
     "static/js/runtime-main.88228a2b.js",
     "static/js/2.47418f7d.chunk.js",
-    "static/css/main.2fcb6366.chunk.css",
-    "static/js/main.b091787c.chunk.js"
+    "static/css/main.784c9ea3.chunk.css",
+    "static/js/main.bb76111d.chunk.js"
   ]
 }
