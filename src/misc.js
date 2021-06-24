@@ -58,7 +58,7 @@ const miners = new Worker({
   defaultProductionRate: 1, 
   defaultProductionRateUpgradeCost: 30, 
   name: "Miners",
-  img: drillImg,
+  img: workerImg,
   miningSpeed: 3000,
 });
 const drills = new Worker({
