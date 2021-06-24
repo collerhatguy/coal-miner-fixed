@@ -2,13 +2,14 @@ import drillImg from "./images/drill.png";
 import workerImg from "./images/worker.png";
 import monkeyImg from "./images/monky.png";
 class Worker {
-  constructor(
+  constructor({
     defaultCost,
     defaultProductionRate, 
     defaultProductionRateUpgradeCost, 
     name,
-    img
-    ) {
+    img,
+    miningSpeed
+  }) {
         
       // storage keys
       this.OWNED_LOCAL_STORAGE_KEY = `Coalminer.${name}Owned`;
@@ -24,6 +25,7 @@ class Worker {
       this.productionRateUpgradeCost = JSON.parse(localStorage.getItem(this.CURRENT_PRODUCTION_RATE_UPGRADE_COST_LOCAL_STORAGE_KEY)) || defaultProductionRateUpgradeCost;
       this.level = 0;
       this.img = img;
+      this.speed = miningSpeed;
       this.saveFiles = [
         {
           key: this.OWNED_LOCAL_STORAGE_KEY,
@@ -51,8 +53,29 @@ class Worker {
     }
 }
 
-const miners = new Worker(10, 1, 100, "Miners", workerImg);
-const drills = new Worker(100, 2, 1000, "Drills", drillImg);
-const monkeyMiners = new Worker(150, 3, 1500, "Monkey Miners", monkeyImg)
+const miners = new Worker({
+  defaultCost: 10,
+  defaultProductionRate: 1, 
+  defaultProductionRateUpgradeCost: 30, 
+  name: "Miners",
+  img: drillImg,
+  miningSpeed: 3000,
+});
+const drills = new Worker({
+  defaultCost: 50,
+  defaultProductionRate: 10, 
+  defaultProductionRateUpgradeCost: 100, 
+  name: "Drills",
+  img: drillImg,
+  miningSpeed: 2000,
+});
+const monkeyMiners = new Worker({
+  defaultCost: 100,
+  defaultProductionRate: 20, 
+  defaultProductionRateUpgradeCost: 300, 
+  name: "Monkey Miners",
+  img: monkeyImg,
+  miningSpeed: 1000,
+})
 const Workers = [miners, drills, monkeyMiners]
 export default Workers;

@@ -25,7 +25,6 @@ function reducer(state, action) {
 }
 export default function useWorker(worker, setMoney, money, multiplier) {
     const [state, dispatch] = useReducer(reducer, worker);
-    const miningSpeed = 3000;
     const progressSpeed = 50;
     const [miningTrigger, setMiningTrigger] = useState(0);
     const [progressTrigger, setProgressTrigger] = useState(0);
@@ -49,7 +48,7 @@ export default function useWorker(worker, setMoney, money, multiplier) {
     useEffect(() => {
         setInterval(() => {
             setMiningTrigger(prevMining => prevMining + 1)
-        }, miningSpeed)
+        }, state.speed)
         setInterval(() => {
             setProgressTrigger(prevProgress => prevProgress + 1)
         }, progressSpeed)
@@ -62,7 +61,7 @@ export default function useWorker(worker, setMoney, money, multiplier) {
 
     useEffect(() => {
         if (state.owned === 0) return;
-        setProgress(Math.floor(((Date.now() - lastMinedTime) / miningSpeed) * 100));
+        setProgress(Math.floor(((Date.now() - lastMinedTime) / state.speed) * 100));
     }, [progressTrigger])
 
     useEffect(() => {

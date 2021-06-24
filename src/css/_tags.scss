@@ -40,11 +40,11 @@ progress {
     margin: 1rem;
     border-radius: 0px;
     width: 90%;
+    border: $tertiary-color-200 solid 1rem;
     &::-webkit-pregress-bar, &::-moz-progress-bar {
-        background-color: $tertiary-color-200;
-        border: $tertiary-color-400
+        background-color: $tertiary-color-400;
     }
     &::-webkit-progress-value {
-        background-color: $tertiary-color-200;
+        background-color: $tertiary-color-400;
     }
 }

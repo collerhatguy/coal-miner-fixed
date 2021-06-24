@@ -120,15 +120,15 @@ progress {
   margin: 1rem;
   border-radius: 0px;
   width: 90%;
+  border: #ffeb33 solid 1rem;
 }
 
 progress::-webkit-pregress-bar, progress::-moz-progress-bar {
-  background-color: #ffeb33;
-  border: #665c00;
+  background-color: #665c00;
 }
 
 progress::-webkit-progress-value {
-  background-color: #ffeb33;
+  background-color: #665c00;
 }
 
 #multiplierContainer {
