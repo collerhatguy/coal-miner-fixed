@@ -1,4 +1,6 @@
 import { useReducer, useEffect, useCallback, useState } from "react";
+import UIFx from "uifx";
+import moneyFX from "./MoneyFX.wav";
 
 const ACTIONS = {
     Upgrade: "UpgradeWorker",
@@ -24,6 +26,9 @@ function reducer(state, action) {
     }
 }
 export default function useWorker(worker, setMoney, money, multiplier) {
+    const miningFx = new UIFx(moneyFX, {
+        throttleMs: 40
+    })
     const [state, dispatch] = useReducer(reducer, worker);
     const progressSpeed = 50;
     const [miningTrigger, setMiningTrigger] = useState(0);
@@ -55,6 +60,7 @@ export default function useWorker(worker, setMoney, money, multiplier) {
     }, []);
 
     useEffect(() => {
+        miningFx.setVolume(0.5).play();
         setMoney(prevMoney => prevMoney + goldMined);
         setLastMinedTime(Date.now());
     }, [miningTrigger]);
