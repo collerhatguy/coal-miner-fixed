@@ -55,6 +55,10 @@ export default function useWorker(worker, setMoney, money, multiplier) {
     }, []);
 
     useEffect(() => {
+        worker.save();
+    },[state])
+
+    useEffect(() => {
         setMoney(prevMoney => prevMoney + goldMined);
         setLastMinedTime(Date.now());
     }, [miningTrigger]);

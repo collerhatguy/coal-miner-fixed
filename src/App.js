@@ -5,8 +5,8 @@ import "./css/App.css";
 import MultiplierList from "./components/MultiplierList";
 
 function App() {
-  const [money, setMoney] = useState(10
-    // JSON.parse(localStorage.getItem("CoalMiner.money")) || 10
+  const [money, setMoney] = useState(
+    JSON.parse(localStorage.getItem("CoalMiner.money")) || 10
   );
   const [multiplier, setMultiplier] = useState(1);
   useEffect(() => {
