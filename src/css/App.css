@@ -95,7 +95,7 @@ button {
   -webkit-transition-duration: 300ms;
           transition-duration: 300ms;
   padding: 1rem;
-  margin: 1rem;
+  margin: .5rem;
   width: 70%;
   min-width: -webkit-min-content;
   min-width: -moz-min-content;
