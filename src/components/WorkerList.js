@@ -5,15 +5,15 @@ import Workers from "../misc";
 export default function WorkerList({ money, setMoney, multiplier}) {
     return (
         <section id="worker-list">
-            {Workers.map((worker, index) => {
-                return <Worker 
-                            worker={worker} 
-                            money={money} 
-                            setMoney={setMoney} 
-                            multiplier={multiplier} 
-                            key={index} 
-                        />
-            })}
+            {Workers.map((worker, index) => 
+                <Worker 
+                    worker={worker} 
+                    money={money} 
+                    setMoney={setMoney} 
+                    multiplier={multiplier} 
+                    key={index} 
+                />
+            )}
         </section>
     )
 }
