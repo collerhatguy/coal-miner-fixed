@@ -13,6 +13,14 @@
 // 2. default styling
 @import "./reset";
 
+// mixins
+@mixin flex-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 // 3. tags
 @import "./tags";
 
@@ -43,10 +51,10 @@
 
 // 6. animation
 @keyframes grow {
-    from {
+    0% {
         transform: scaleY(0);
     }
-    to {
+    100% {
         transform: scaleY(1);
     }
 }

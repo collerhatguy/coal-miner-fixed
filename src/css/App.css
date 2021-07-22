@@ -48,6 +48,8 @@ table {
   padding: 0;
   margin: 0;
   max-width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 html {
@@ -212,19 +214,12 @@ progress::-webkit-progress-value {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: -webkit-min-content;
-  height: -moz-min-content;
-  height: min-content;
   -webkit-animation: grow 1000ms linear forwards;
           animation: grow 1000ms linear forwards;
 }
 
 .unaffordable {
   opacity: .09;
-}
-
-.hidden {
-  display: none;
 }
 
 @media only screen and (max-width: 375px) {
@@ -234,22 +229,22 @@ progress::-webkit-progress-value {
 }
 
 @-webkit-keyframes grow {
-  from {
+  0% {
     -webkit-transform: scaleY(0);
             transform: scaleY(0);
   }
-  to {
+  100% {
     -webkit-transform: scaleY(1);
             transform: scaleY(1);
   }
 }
 
 @keyframes grow {
-  from {
+  0% {
     -webkit-transform: scaleY(0);
             transform: scaleY(0);
   }
-  to {
+  100% {
     -webkit-transform: scaleY(1);
             transform: scaleY(1);
   }

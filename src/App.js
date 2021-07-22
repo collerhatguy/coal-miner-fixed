@@ -14,7 +14,7 @@ function App() {
   }, [money])
   return (
     <main>
-      <h2>Current Money: {money}</h2>
+      <h2>Current Money: <span data-cy="money">{money}</span></h2>
       <WorkerList money={money} setMoney={setMoney} multiplier={multiplier} />
       <MultiplierList setMultiplier={setMultiplier} />
     </main>

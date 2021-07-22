@@ -5,6 +5,7 @@ export default function Multiplier({amount, setMultiplier}) {
         <label for={`${amount}-multiplier`}>
             {amount}x
             <input
+                data-cy="multiplier"
                 type="radio"
                 value={amount}
                 id={`${amount}-multiplier`}

@@ -14,21 +14,21 @@ export default function Worker({worker, money, setMoney, multiplier}) {
             <h3 className="worker-name">{workerState.name}</h3>
             <div>
                 <button tabIndex="0"
+                    data-cy="visibility-btn"
                     onClick={() => setVisible(!visible)}>
-                    {visible ? "Hide?" : "Reveal?"}
+                    {visible ? "Hide" : "Show"}?
                 </button>
             </div>
-            {visible ? <div>
-                <progress max={100} value={progress} />
-                <img
-                    className="worker-image" 
+            {visible ? <div data-cy="visibility-pnl" className="visible">
+                <progress data-cy="progress" max={100} value={progress} />
+                <img className="worker-image" 
                     src={workerState.img} />
-                <h4>Owned: <span>{workerState.owned}</span></h4>
+                <h4>Owned: <span data-cy="owned">{workerState.owned}</span></h4>
                 <h4>Cost: <span>{workerState.cost * multiplier}</span>$</h4>
                 <h4>Production Rate: <span>{workerState.productionRate}</span>$</h4>
                 <h4>Upgrade Cost: <span>{workerState.productionRateUpgradeCost}</span>$</h4>
                 <h4>Level: <span>{workerState.level}</span></h4>
-                <button onClick={() => BuyWorker()}>Buy <span>{multiplier}</span>?</button>
+                <button data-cy="buy" onClick={() => BuyWorker()}>Buy <span>{multiplier}</span>?</button>
                 <button onClick={() => UpgradeWorker()}>Upgrade?</button>
             </div> : null}
         </div>
