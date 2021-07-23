@@ -1,11 +1,13 @@
 // table of contents
 // 1. variables
 // 2. default styling
-// 3. tags
-// 4. ids
-// 5. classes
-// 6. animation
-// 7. media queries
+// 3. mixins
+// 3.5: general stuff 
+// 4. header
+// 5. multiplier
+// 6. workers
+// 7. animation
+// 8. media queries
 
 // 1. variables
 @import "./variables";
@@ -13,21 +15,46 @@
 // 2. default styling
 @import "./reset";
 
-// mixins
+// 3. mixins
 @mixin flex-column {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+// 3.5: general stuff 
+body, main {
+    @include flex-column();
+    background-color: $primary-color;
+    color: $secondary-color;
+    text-align: center;
+}
+body {
+    padding: 2rem;
+}
 
-// 3. tags
+// 4. header
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.text-container {
+    text-align: start;
+}
+h1, h2, h3 {
+    font-weight: 900;
+    color: $tertiary-color-400;
+}
+h1 {font-size: $base-font * 5;}
+h2 {font-size: $base-font * 4;}
 @import "./tags";
 
-// 4. ids
-#multiplierContainer {
+// 5. multiplier
+.multiplier-container {
     font-size: $base-font * 3;
-    background-color: $tertiary-color-300;
+    background-color: $tertiary-color-400;
     color: $primary-color;
     text-align: left;
     width: 50%;
@@ -40,13 +67,15 @@
         padding: 1rem;
     }
 }
-#worker-list {
+
+// 6. worker
+.worker-list {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    h3 {padding: .5rem 2rem;}
 }
 
-// 5. classes
 @import "./classes";
 
 // 6. animation

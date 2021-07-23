@@ -13,11 +13,22 @@ function App() {
     localStorage.setItem("GoldMiner.money", JSON.stringify(money))
   }, [money])
   return (
-    <main>
-      <h2>Current Money: <span data-cy="money">{money}</span></h2>
-      <WorkerList money={money} setMoney={setMoney} multiplier={multiplier} />
+    <>
+    <header>
+      <div className="text-container">
+        <h1>Gold Miners</h1>
+        <h2>Current Money: <span data-cy="money">{money}</span></h2>
+      </div>
       <MultiplierList setMultiplier={setMultiplier} />
+    </header>
+    <main>
+      <WorkerList 
+        money={money} 
+        multiplier={multiplier} 
+        setMoney={setMoney} 
+      />
     </main>
+    </>
   );
 }
 

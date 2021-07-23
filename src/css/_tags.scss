@@ -1,19 +1,5 @@
-body, main {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column wrap;
-    background-color: $primary-color;
-    color: $secondary-color;
-    text-align: center;
-}
-h1 {
-    font-size: $base-font * 4; 
-}
-h2, button {
-    font-size: $base-font * 3;
-}
+
+
 button {
     cursor: pointer;
     background-color: $tertiary-color-100;

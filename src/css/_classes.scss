@@ -1,7 +1,8 @@
 
 .worker {
     @include flex-column();
-    border: solid .2em $tertiary-color-200;
+    cursor: pointer;
+    border: solid 5px $tertiary-color-200;
     text-align: center;
     font-size: $base-font * 3;
     margin: 1rem;
@@ -18,6 +19,7 @@
 }
 .visible {
     @include flex-column();
+    transform-origin: center top;
     animation: grow 1000ms linear forwards;
 }
 .unaffordable {

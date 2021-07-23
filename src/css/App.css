@@ -62,7 +62,6 @@ body {
 }
 
 body, main {
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -74,19 +73,44 @@ body, main {
           align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-flow: column wrap;
-          flex-flow: column wrap;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background-color: white;
   color: black;
   text-align: center;
 }
 
-h1 {
-  font-size: 4rem;
+body {
+  padding: 2rem;
 }
 
-h2, button {
-  font-size: 3rem;
+header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.text-container {
+  text-align: start;
+}
+
+h1, h2, h3 {
+  font-weight: 900;
+  color: #665c00;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+h2 {
+  font-size: 4rem;
 }
 
 button {
@@ -133,9 +157,9 @@ progress::-webkit-progress-value {
   background-color: #665c00;
 }
 
-#multiplierContainer {
+.multiplier-container {
   font-size: 3rem;
-  background-color: #ccb800;
+  background-color: #665c00;
   color: white;
   text-align: left;
   width: 50%;
@@ -143,7 +167,7 @@ progress::-webkit-progress-value {
   padding: 1rem;
 }
 
-#multiplierContainer fieldset {
+.multiplier-container fieldset {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -156,16 +180,20 @@ progress::-webkit-progress-value {
   padding: 1rem;
 }
 
-#worker-list {
+.worker-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.worker-list h3 {
+  padding: .5rem 2rem;
 }
 
 .worker {
@@ -182,7 +210,8 @@ progress::-webkit-progress-value {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: solid 0.2em #ffeb33;
+  cursor: pointer;
+  border: solid 5px #ffeb33;
   text-align: center;
   font-size: 3rem;
   margin: 1rem;
@@ -214,6 +243,8 @@ progress::-webkit-progress-value {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-transform-origin: center top;
+          transform-origin: center top;
   -webkit-animation: grow 1000ms linear forwards;
           animation: grow 1000ms linear forwards;
 }

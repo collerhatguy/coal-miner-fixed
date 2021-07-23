@@ -25,37 +25,39 @@ function reducer(state, action) {
 }
 export default function useWorker(worker, setMoney, money, multiplier) {
     const [state, dispatch] = useReducer(reducer, worker);
-    const progressSpeed = 50;
-    const [miningTrigger, setMiningTrigger] = useState(0);
-    const [progressTrigger, setProgressTrigger] = useState(0);
-    const [goldMined, setGoldMined] = useState(worker.owned * worker.productionRate);
     const [lastMinedTime, setLastMinedTime] = useState(Date.now());
     const [progress, setProgress] = useState(0);
-
+    
     const BuyWorker = useCallback(() => {
         const totalCost = state.cost * multiplier;
         if (money < totalCost) return;
         setMoney(prevMoney => prevMoney - totalCost);
         dispatch({type: ACTIONS.Buy, payload: multiplier})
     }, [state, multiplier, money])
-
+    
     const UpgradeWorker = useCallback(() => {
         if (money < state.productionRateUpgradeCost) return;
         setMoney(prevMoney => prevMoney - state.productionRateUpgradeCost);
         dispatch({type: ACTIONS.Upgrade})
     }, [state, money])
-
+    
+    const [miningTrigger, setMiningTrigger] = useState(0);
+    const [progressTrigger, setProgressTrigger] = useState(0);
     useEffect(() => {
+        // set up the triggers for useEffect mining
+        // has to be done this whay b/c state doesnt update withen a set timmeout function
         setInterval(() => {
             setMiningTrigger(prevMining => prevMining + 1)
         }, state.speed)
+        
+        const progressSpeed = 100;
         setInterval(() => {
             setProgressTrigger(prevProgress => prevProgress + 1)
         }, progressSpeed)
     }, []);
 
     useEffect(() => {
-        setMoney(prevMoney => prevMoney + goldMined);
+        setMoney(prevMoney => prevMoney + state.owned * state.productionRate);
         setLastMinedTime(Date.now());
     }, [miningTrigger]);
 
@@ -64,9 +66,6 @@ export default function useWorker(worker, setMoney, money, multiplier) {
         setProgress(Math.floor(((Date.now() - lastMinedTime) / state.speed) * 100));
     }, [progressTrigger])
 
-    useEffect(() => {
-        setGoldMined(state.owned * state.productionRate);
-    }, [state]);
     
     return [state, progress, BuyWorker, UpgradeWorker];
 }
