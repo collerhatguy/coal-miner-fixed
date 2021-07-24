@@ -9,27 +9,35 @@ export default function Worker({worker, money, setMoney, multiplier}) {
     useEffect(() => {
         if (worker.cost <= money) setAffordable(true); 
     }, [money])
+    const buy = e => {
+        e.stopPropagation()
+        BuyWorker()
+    }
+    const upgrade = e => {
+        e.stopPropagation()
+        UpgradeWorker()
+    }
+    if (!affordable) return null;
     return (
-        <div className={`worker ${affordable ? "" : "unaffordable"}`}>
+        <div 
+            className="worker"
+            onClick={() => setVisible(!visible)}
+            data-cy="visibility-btn">
             <h3 className="worker-name">{workerState.name}</h3>
-            <div>
-                <button tabIndex="0"
-                    data-cy="visibility-btn"
-                    onClick={() => setVisible(!visible)}>
-                    {visible ? "Hide" : "Show"}?
-                </button>
-            </div>
             {visible ? <div data-cy="visibility-pnl" className="visible">
                 <progress data-cy="progress" max={100} value={progress} />
+                <button 
+                    data-cy="buy" 
+                    onClick={buy}
+                >Buy <span>{multiplier}</span> for <span>{workerState.cost * multiplier}</span>$?</button>
+                <button 
+                    onClick={upgrade}
+                >Upgrade for <span>{workerState.productionRateUpgradeCost}</span>$?</button>
                 <img className="worker-image" 
                     src={workerState.img} />
                 <h4>Owned: <span data-cy="owned">{workerState.owned}</span></h4>
-                <h4>Cost: <span>{workerState.cost * multiplier}</span>$</h4>
                 <h4>Production Rate: <span>{workerState.productionRate}</span>$</h4>
-                <h4>Upgrade Cost: <span>{workerState.productionRateUpgradeCost}</span>$</h4>
                 <h4>Level: <span>{workerState.level}</span></h4>
-                <button data-cy="buy" onClick={() => BuyWorker()}>Buy <span>{multiplier}</span>?</button>
-                <button onClick={() => UpgradeWorker()}>Upgrade?</button>
             </div> : null}
         </div>
     )

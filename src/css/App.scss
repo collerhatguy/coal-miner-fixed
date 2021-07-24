@@ -1,11 +1,13 @@
 // table of contents
 // 1. variables
 // 2. default styling
-// 3. tags
-// 4. ids
-// 5. classes
-// 6. animation
-// 7. media queries
+// 3. mixins
+// 3.5: general stuff 
+// 4. header
+// 5. multiplier
+// 6. workers
+// 7. animation
+// 8. media queries
 
 // 1. variables
 @import "./variables";
@@ -13,41 +15,32 @@
 // 2. default styling
 @import "./reset";
 
-// mixins
+// 3. mixins
 @mixin flex-column {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
-
-// 3. tags
-@import "./tags";
-
-// 4. ids
-#multiplierContainer {
-    font-size: $base-font * 3;
-    background-color: $tertiary-color-300;
-    color: $primary-color;
-    text-align: left;
-    width: 50%;
-    margin: 1rem;
-    padding: 1rem;
-    fieldset {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        padding: 1rem;
-    }
+// 3.5: general stuff 
+body, main {
+    @include flex-column();
+    background-color: $primary-color;
+    color: $secondary-color;
+    text-align: center;
 }
-#worker-list {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+body {
+    padding: 2rem;
 }
 
-// 5. classes
-@import "./classes";
+// 4. header
+@import "./header";
+
+// 5. multiplier
+@import "./multiplier";
+
+// 6. worker
+@import "./worker";
 
 // 6. animation
 @keyframes grow {

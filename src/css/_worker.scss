@@ -1,0 +1,74 @@
+
+.worker-list {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    
+    h3 {padding: .5rem 2rem;}
+
+    button {
+        cursor: pointer;
+        font-size: $base-font * 3;
+        background-color: $tertiary-color-100;
+        color: $tertiary-color-400;
+        border: $tertiary-color-400 solid .1rem;
+        transition-duration: 300ms;
+        padding: 1rem;
+        margin: .5rem;
+        width: 70%;
+        min-width: min-content;
+        &:focus, &:hover {
+            outline: none;
+            background-color: $tertiary-color-400;
+            color: $tertiary-color-100;
+        }
+
+    }
+    span {
+        color: $tertiary-color-300;
+    }
+}
+
+progress {
+    margin: 1rem;
+    border-radius: 0px;
+    width: 90%;
+    border: $tertiary-color-200 solid 1rem;
+    &::-webkit-pregress-bar, &::-moz-progress-bar {
+        background-color: $tertiary-color-400;
+    }
+    &::-webkit-progress-value {
+        background-color: $tertiary-color-400;
+    }
+}
+
+
+.worker {
+    @include flex-column();
+    cursor: pointer;
+    border: solid 5px $tertiary-color-200;
+    text-align: center;
+    font-size: $base-font * 3;
+    margin: 1rem;
+    padding: 1rem;
+}
+.worker-name {
+    width: 100%;
+    background-color: $tertiary-color-400;
+    color: $tertiary-color-100;
+}
+.worker-image {
+    width: 300px;
+    height: 300px;
+}
+.visible {
+    @include flex-column();
+    transform-origin: center top;
+    animation: grow 1000ms linear forwards;
+}
+@media only screen and (max-width: 375px) {
+    .worker {
+        width: 100%;
+    }
+}

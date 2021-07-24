@@ -10,10 +10,7 @@ describe("button test", () => {
             cy.wrap(pnl).should("exist")
         })
         visibilityBtns.each(btn => {
-            cy.wrap(btn)
-                .should("have.text","Hide?")
-                .click()
-                .should("have.text","Show?")
+            cy.wrap(btn).click()
         })
         cy.get("[data-cy='visibility-pnl']").should("not.exist")
     })

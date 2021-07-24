@@ -62,7 +62,6 @@ body {
 }
 
 body, main {
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -74,23 +73,112 @@ body, main {
           align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-flow: column wrap;
-          flex-flow: column wrap;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background-color: white;
   color: black;
   text-align: center;
 }
 
+body {
+  padding: 2rem;
+}
+
+header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.text-container {
+  text-align: start;
+}
+
+h1, h2, h3 {
+  font-weight: 900;
+  color: #665c00;
+}
+
 h1 {
+  font-size: 5rem;
+}
+
+h2 {
   font-size: 4rem;
 }
 
-h2, button {
-  font-size: 3rem;
+@media (max-width: 600px) {
+  header {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .text-container {
+    text-align: center;
+  }
 }
 
-button {
+.multiplier-container {
+  font-size: 3rem;
+  background-color: #665c00;
+  color: white;
+  text-align: left;
+  width: 50%;
+  margin: 1rem;
+  padding: 1rem;
+}
+
+fieldset {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem;
+}
+
+[type="checkbox"] {
   cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  .multiplier-container {
+    width: 100%;
+  }
+}
+
+.worker-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.worker-list h3 {
+  padding: .5rem 2rem;
+}
+
+.worker-list button {
+  cursor: pointer;
+  font-size: 3rem;
   background-color: #fff599;
   color: #665c00;
   border: #665c00 solid 0.1rem;
@@ -104,17 +192,13 @@ button {
   min-width: min-content;
 }
 
-button:focus, button:hover {
+.worker-list button:focus, .worker-list button:hover {
   outline: none;
   background-color: #665c00;
   color: #fff599;
 }
 
-input {
-  cursor: pointer;
-}
-
-span {
+.worker-list span {
   color: #ccb800;
 }
 
@@ -133,41 +217,6 @@ progress::-webkit-progress-value {
   background-color: #665c00;
 }
 
-#multiplierContainer {
-  font-size: 3rem;
-  background-color: #ccb800;
-  color: white;
-  text-align: left;
-  width: 50%;
-  margin: 1rem;
-  padding: 1rem;
-}
-
-#multiplierContainer fieldset {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 1rem;
-}
-
-#worker-list {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
 .worker {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -182,7 +231,8 @@ progress::-webkit-progress-value {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  border: solid 0.2em #ffeb33;
+  cursor: pointer;
+  border: solid 5px #ffeb33;
   text-align: center;
   font-size: 3rem;
   margin: 1rem;
@@ -190,9 +240,9 @@ progress::-webkit-progress-value {
 }
 
 .worker-name {
+  width: 100%;
   background-color: #665c00;
   color: #fff599;
-  width: 90%;
 }
 
 .worker-image {
@@ -214,17 +264,15 @@ progress::-webkit-progress-value {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-transform-origin: center top;
+          transform-origin: center top;
   -webkit-animation: grow 1000ms linear forwards;
           animation: grow 1000ms linear forwards;
 }
 
-.unaffordable {
-  opacity: .09;
-}
-
 @media only screen and (max-width: 375px) {
-  .worker, .unaffordable, body {
-    width: 80%;
+  .worker {
+    width: 100%;
   }
 }
 

@@ -1,0 +1,24 @@
+
+.multiplier-container {
+    font-size: $base-font * 3;
+    background-color: $tertiary-color-400;
+    color: $primary-color;
+    text-align: left;
+    width: 50%;
+    margin: 1rem;
+    padding: 1rem;
+}
+fieldset {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1rem;
+}
+[type="checkbox"] {
+    cursor: pointer;
+}
+@media(max-width: 500px) {
+    .multiplier-container {
+        width: 100%;
+    }
+}
