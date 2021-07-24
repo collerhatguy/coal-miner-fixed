@@ -14,3 +14,10 @@ h1, h2, h3 {
 }
 h1 {font-size: $base-font * 5;}
 h2 {font-size: $base-font * 4;}
+
+@media(max-width: 600px) {
+    header {
+        flex-direction: column;
+    }    
+    .text-container {text-align: center;}
+}

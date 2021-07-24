@@ -17,3 +17,8 @@ fieldset {
 [type="checkbox"] {
     cursor: pointer;
 }
+@media(max-width: 500px) {
+    .multiplier-container {
+        width: 100%;
+    }
+}

@@ -1,8 +1,9 @@
 
 .worker-list {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
+    flex-wrap: wrap;
     
     h3 {padding: .5rem 2rem;}
 
@@ -67,7 +68,7 @@ progress {
     animation: grow 1000ms linear forwards;
 }
 @media only screen and (max-width: 375px) {
-    .worker, .unaffordable, body {
-        width: 80%;
+    .worker {
+        width: 100%;
     }
 }
