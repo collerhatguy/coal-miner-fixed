@@ -34,49 +34,13 @@ body {
 }
 
 // 4. header
-header {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-.text-container {
-    text-align: start;
-}
-h1, h2, h3 {
-    font-weight: 900;
-    color: $tertiary-color-400;
-}
-h1 {font-size: $base-font * 5;}
-h2 {font-size: $base-font * 4;}
-@import "./tags";
+@import "./header";
 
 // 5. multiplier
-.multiplier-container {
-    font-size: $base-font * 3;
-    background-color: $tertiary-color-400;
-    color: $primary-color;
-    text-align: left;
-    width: 50%;
-    margin: 1rem;
-    padding: 1rem;
-    fieldset {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        padding: 1rem;
-    }
-}
+@import "./multiplier";
 
 // 6. worker
-.worker-list {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    h3 {padding: .5rem 2rem;}
-}
-
-@import "./classes";
+@import "./worker";
 
 // 6. animation
 @keyframes grow {

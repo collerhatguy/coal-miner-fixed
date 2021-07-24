@@ -1,0 +1,16 @@
+
+header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.text-container {
+    text-align: start;
+}
+h1, h2, h3 {
+    font-weight: 900;
+    color: $tertiary-color-400;
+}
+h1 {font-size: $base-font * 5;}
+h2 {font-size: $base-font * 4;}

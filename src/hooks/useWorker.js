@@ -25,8 +25,6 @@ function reducer(state, action) {
 }
 export default function useWorker(worker, setMoney, money, multiplier) {
     const [state, dispatch] = useReducer(reducer, worker);
-    const [lastMinedTime, setLastMinedTime] = useState(Date.now());
-    const [progress, setProgress] = useState(0);
     
     const BuyWorker = useCallback(() => {
         const totalCost = state.cost * multiplier;
@@ -43,6 +41,8 @@ export default function useWorker(worker, setMoney, money, multiplier) {
     
     const [miningTrigger, setMiningTrigger] = useState(0);
     const [progressTrigger, setProgressTrigger] = useState(0);
+    const [lastMinedTime, setLastMinedTime] = useState(Date.now());
+    const [progress, setProgress] = useState(0);
     useEffect(() => {
         // set up the triggers for useEffect mining
         // has to be done this whay b/c state doesnt update withen a set timmeout function
@@ -50,7 +50,7 @@ export default function useWorker(worker, setMoney, money, multiplier) {
             setMiningTrigger(prevMining => prevMining + 1)
         }, state.speed)
         
-        const progressSpeed = 100;
+        const progressSpeed = 80;
         setInterval(() => {
             setProgressTrigger(prevProgress => prevProgress + 1)
         }, progressSpeed)
@@ -58,11 +58,13 @@ export default function useWorker(worker, setMoney, money, multiplier) {
 
     useEffect(() => {
         setMoney(prevMoney => prevMoney + state.owned * state.productionRate);
+        // reset the time that we last mined
         setLastMinedTime(Date.now());
     }, [miningTrigger]);
 
     useEffect(() => {
         if (state.owned === 0) return;
+        // calculate how much time past in percentage since we last mined
         setProgress(Math.floor(((Date.now() - lastMinedTime) / state.speed) * 100));
     }, [progressTrigger])
 

@@ -17,9 +17,10 @@ export default function Worker({worker, money, setMoney, multiplier}) {
         e.stopPropagation()
         UpgradeWorker()
     }
+    if (!affordable) return null;
     return (
         <div 
-            className={`worker ${affordable ? "" : "unaffordable"}`}
+            className="worker"
             onClick={() => setVisible(!visible)}
             data-cy="visibility-btn">
             <h3 className="worker-name">{workerState.name}</h3>
