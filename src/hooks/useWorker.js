@@ -1,4 +1,5 @@
-import { useReducer, useEffect, useCallback, useState } from "react";
+import { useReducer, useEffect, useLayoutEffect, useCallback, useState } from "react";
+import { useMoney } from "./useContext";
 
 const ACTIONS = {
     Upgrade: "UpgradeWorker",
@@ -23,9 +24,15 @@ function reducer(state, action) {
         default: return state;
     }
 }
-export default function useWorker(worker, setMoney, money, multiplier) {
+export default function useWorker(worker, multiplier) {
     const [state, dispatch] = useReducer(reducer, worker);
+    const [money, setMoney] = useMoney();
     
+    const [affordable, setAffordable] = useState(false)
+    useEffect(() => {
+        if (worker.cost <= money) setAffordable(true); 
+    }, [money])
+
     const BuyWorker = useCallback(() => {
         const totalCost = state.cost * multiplier;
         if (money < totalCost) return;
@@ -38,7 +45,7 @@ export default function useWorker(worker, setMoney, money, multiplier) {
         setMoney(prevMoney => prevMoney - state.productionRateUpgradeCost);
         dispatch({type: ACTIONS.Upgrade})
     }, [state, money])
-    
+
     const [miningTrigger, setMiningTrigger] = useState(0);
     const [progressTrigger, setProgressTrigger] = useState(0);
     const [lastMinedTime, setLastMinedTime] = useState(Date.now());
@@ -62,12 +69,12 @@ export default function useWorker(worker, setMoney, money, multiplier) {
         setLastMinedTime(Date.now());
     }, [miningTrigger]);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (state.owned === 0) return;
         // calculate how much time past in percentage since we last mined
         setProgress(Math.floor(((Date.now() - lastMinedTime) / state.speed) * 100));
     }, [progressTrigger])
 
     
-    return [state, progress, BuyWorker, UpgradeWorker];
+    return [state, progress, affordable, BuyWorker, UpgradeWorker];
 }

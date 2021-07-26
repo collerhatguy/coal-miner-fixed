@@ -1,14 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import useWorker from "../hooks/useWorker";
 
 
-export default function Worker({worker, money, setMoney, multiplier}) {
-    const [workerState, progress, BuyWorker, UpgradeWorker] = useWorker(worker, setMoney, money, multiplier);
-    const [affordable, setAffordable] = useState(false)
+export default function Worker({worker, multiplier}) {
+    const [workerState, progress, affordable, BuyWorker, UpgradeWorker] = useWorker(worker, multiplier);
+    
     const [visible, setVisible] = useState(true)
-    useEffect(() => {
-        if (worker.cost <= money) setAffordable(true); 
-    }, [money])
+
     const buy = e => {
         e.stopPropagation()
         BuyWorker()
