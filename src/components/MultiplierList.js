@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import Multiplier from "./Multiplier";
+import PropTypes from "prop-types";
 
 export default function MultiplierList({setMultiplier}) {
     return (
@@ -12,4 +13,7 @@ export default function MultiplierList({setMultiplier}) {
             </fieldset>
         </div>
     )
+}
+MultiplierList.propType = {
+    setMultiplier: PropTypes.func.isRequired,
 }

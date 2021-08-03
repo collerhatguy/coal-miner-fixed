@@ -1,10 +1,11 @@
 import React from 'react';
 import Worker from "./Worker";
 import Workers from "../misc";
+import PropTypes from "prop-types";
 
 export default function WorkerList({ multiplier}) {
     return (
-        <ul class="worker-list">
+        <ul className="worker-list">
             {Workers.map((worker, index) => 
                 <Worker 
                     worker={worker} 
@@ -14,4 +15,7 @@ export default function WorkerList({ multiplier}) {
             )}
         </ul>
     )
+}
+WorkerList.propTypes = {
+    multiplier: PropTypes.oneOf([1, 10, 100])
 }

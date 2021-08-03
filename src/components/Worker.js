@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import useWorker from "../hooks/useWorker";
+import PropTypes from "prop-types"
 
 
 export default function Worker({worker, multiplier}) {
@@ -39,4 +40,15 @@ export default function Worker({worker, multiplier}) {
             </div> : null}
         </div>
     )
+}
+Worker.propTypes = {
+    worker: PropTypes.shape({
+        name: PropTypes.string,
+        speed: PropTypes.number,
+        owned: PropTypes.number,
+        level: PropTypes.number,
+        productionRate: PropTypes.number,
+        productionRateUpgradeCost: PropTypes.number,
+    }),
+    multiplier: PropTypes.oneOf([1, 10, 100])
 }

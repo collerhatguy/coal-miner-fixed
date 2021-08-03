@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Multiplier({amount, setMultiplier}) {
     return (
-        <label for={`${amount}-multiplier`}>
+        <label htmlFor={`${amount}-multiplier`}>
             {amount}x
             <input
                 data-cy="multiplier"
