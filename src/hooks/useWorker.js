@@ -1,5 +1,6 @@
-import { useReducer, useEffect, useLayoutEffect, useCallback, useState } from "react";
+import { useReducer, useEffect, useCallback, useState } from "react";
 import { useMoney } from "./useContext";
+import useProgress from "./useProgress";
 
 const ACTIONS = {
     Upgrade: "UpgradeWorker",
@@ -47,33 +48,21 @@ export default function useWorker(worker, multiplier) {
     }, [state, money])
 
     const [miningTrigger, setMiningTrigger] = useState(0);
-    const [progressTrigger, setProgressTrigger] = useState(0);
-    const [lastMinedTime, setLastMinedTime] = useState(Date.now());
-    const [progress, setProgress] = useState(0);
+
     useEffect(() => {
         // set up the triggers for useEffect mining
-        // has to be done this whay b/c state doesnt update withen a set timmeout function
         setInterval(() => {
             setMiningTrigger(prevMining => prevMining + 1)
         }, state.speed)
-        
-        const progressSpeed = 80;
-        setInterval(() => {
-            setProgressTrigger(prevProgress => prevProgress + 1)
-        }, progressSpeed)
-    }, []);
+    }, [])
+    const [progress, resetProgress] = useProgress(state.speed);
 
     useEffect(() => {
         setMoney(prevMoney => prevMoney + state.owned * state.productionRate);
         // reset the time that we last mined
-        setLastMinedTime(Date.now());
+        resetProgress();
     }, [miningTrigger]);
 
-    useLayoutEffect(() => {
-        if (state.owned === 0) return;
-        // calculate how much time past in percentage since we last mined
-        setProgress(Math.floor(((Date.now() - lastMinedTime) / state.speed) * 100));
-    }, [progressTrigger])
 
     
     return [state, progress, affordable, BuyWorker, UpgradeWorker];

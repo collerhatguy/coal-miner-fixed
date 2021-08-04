@@ -24,7 +24,7 @@ export default function Worker({worker, multiplier}) {
             data-cy="visibility-btn">
             <h3 className="worker-name">{workerState.name}</h3>
             {visible ? <div data-cy="visibility-pnl" className="visible">
-                <progress data-cy="progress" max={100} value={progress} />
+                <progress data-cy="progress" max={100} value={workerState.owned ? progress : 0} />
                 <button 
                     data-cy="buy" 
                     onClick={buy}
