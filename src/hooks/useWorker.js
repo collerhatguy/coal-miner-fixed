@@ -5,7 +5,6 @@ import useProgress from "./useProgress";
 const ACTIONS = {
     Upgrade: "UpgradeWorker",
     Buy: "BuyWorker",
-    Mining: "MiningWorker",
 }
 function reducer(state, action) {
     switch(action.type) {
@@ -50,7 +49,6 @@ export default function useWorker(worker, multiplier) {
     const [miningTrigger, setMiningTrigger] = useState(0);
 
     useEffect(() => {
-        // set up the triggers for useEffect mining
         setInterval(() => {
             setMiningTrigger(prevMining => prevMining + 1)
         }, state.speed)
@@ -59,7 +57,6 @@ export default function useWorker(worker, multiplier) {
 
     useEffect(() => {
         setMoney(prevMoney => prevMoney + state.owned * state.productionRate);
-        // reset the time that we last mined
         resetProgress();
     }, [miningTrigger]);
 
