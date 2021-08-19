@@ -1,42 +1,39 @@
 import React, { useState } from 'react';
+import { useMultiplier } from '../hooks/useContext';
 import useWorker from "../hooks/useWorker";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 
 
-export default function Worker({worker, multiplier}) {
+export default function Worker(props) {
+    const { worker } = props;
+    const multiplier = useMultiplier();
     const [workerState, progress, affordable, BuyWorker, UpgradeWorker] = useWorker(worker, multiplier);
     
-    const [visible, setVisible] = useState(true)
+    const { owned, name, cost, level, productionRate, productionRateUpgradeCost, img } = workerState;
+    
+    const [visible, setVisible] = useState(true);
 
-    const buy = e => {
-        e.stopPropagation()
-        BuyWorker()
-    }
-    const upgrade = e => {
-        e.stopPropagation()
-        UpgradeWorker()
-    }
     if (!affordable) return null;
     return (
         <div 
             className="worker"
             onClick={() => setVisible(!visible)}
             data-cy="visibility-btn">
-            <h3 className="worker-name">{workerState.name}</h3>
+            <h3 className="worker-name">{name}</h3>
             {visible && <div data-cy="visibility-pnl" className="visible">
-                <progress data-cy="progress" max={100} value={workerState.owned ? progress : 0} />
+                <progress data-cy="progress" max={100} value={owned ? progress : 0} />
                 <button 
                     data-cy="buy" 
-                    onClick={buy}
-                >Buy <span>{multiplier}</span> for <span>{workerState.cost * multiplier}</span>$?</button>
+                    onClick={BuyWorker}
+                >Buy <span>{multiplier}</span> for <span>{cost * multiplier}</span>$?</button>
                 <button 
-                    onClick={upgrade}
-                >Upgrade for <span>{workerState.productionRateUpgradeCost}</span>$?</button>
+                    onClick={UpgradeWorker}
+                >Upgrade for <span>{productionRateUpgradeCost}</span>$?</button>
                 <img className="worker-image" 
-                    src={workerState.img} />
-                <h4>Owned: <span data-cy="owned">{workerState.owned}</span></h4>
-                <h4>Production Rate: <span>{workerState.productionRate}</span>$</h4>
-                <h4>Level: <span>{workerState.level}</span></h4>
+                    src={img} />
+                <h4>Owned: <span data-cy="owned">{owned}</span></h4>
+                <h4>Production Rate: <span>{productionRate}</span>$</h4>
+                <h4>Level: <span>{level}</span></h4>
             </div>}
         </div>
     )
@@ -49,6 +46,5 @@ Worker.propTypes = {
         level: PropTypes.number,
         productionRate: PropTypes.number,
         productionRateUpgradeCost: PropTypes.number,
-    }),
-    multiplier: PropTypes.oneOf([1, 10, 100])
+    })
 }

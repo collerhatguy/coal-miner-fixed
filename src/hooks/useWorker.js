@@ -12,14 +12,16 @@ export default function useWorker(worker, multiplier) {
         if (worker.cost <= money) setAffordable(true); 
     }, [money])
 
-    const BuyWorker = useCallback(() => {
+    const BuyWorker = useCallback(event => {
+        event.stopPropagation()
         const totalCost = state.cost * multiplier;
         if (money < totalCost) return;
         setMoney(prevMoney => prevMoney - totalCost);
         dispatch(buy(multiplier))
     }, [state, multiplier, money])
     
-    const UpgradeWorker = useCallback(() => {
+    const UpgradeWorker = useCallback(event => {
+        event.stopPropagation()
         if (money < state.productionRateUpgradeCost) return;
         setMoney(prevMoney => prevMoney - state.productionRateUpgradeCost);
         dispatch(upgrade())
