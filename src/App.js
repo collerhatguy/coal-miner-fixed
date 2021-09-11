@@ -14,9 +14,13 @@ function App() {
         <header>
           <div className="text-container">
             <h1>Gold Miners</h1>
-            <h2>Current Money: <span data-cy="money">{money}</span></h2>
+            <h2>Current Money: 
+              <span data-cy="money">
+                {money}
+              </span>
+            </h2>
           </div>
-          <MultiplierList setMultiplier={setMultiplier} />
+          <MultiplierList setMultiplier={setMultiplier}/>
         </header>
         <main>
           <WorkerList/>

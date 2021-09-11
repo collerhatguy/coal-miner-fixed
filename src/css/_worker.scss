@@ -62,7 +62,7 @@ progress {
     width: 300px;
     height: 300px;
 }
-.visible {
+.detail-container {
     @include flex-column();
     transform-origin: center top;
     animation: grow 1000ms linear forwards;

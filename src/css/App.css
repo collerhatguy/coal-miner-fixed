@@ -250,7 +250,7 @@ progress::-webkit-progress-value {
   height: 300px;
 }
 
-.visible {
+.detail-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
