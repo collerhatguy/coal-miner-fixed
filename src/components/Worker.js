@@ -14,8 +14,7 @@ export default function Worker(props) {
     
     const [visible, toggleVisible] = useToggle(true)
 
-    if (!affordable) return null
-    return (
+    if (affordable) return (
         <div 
             className="worker"
             onClick={toggleVisible}
