@@ -2,19 +2,28 @@ import { useReducer, useEffect, useCallback, useState } from "react";
 import { useMoney } from "./useContext";
 import reducer, { upgrade, buy } from "../reducers";
 import useProgress from "./useProgress";
+import useTimer from "./useTimer"
 
 export default function useWorker(worker, multiplier) {
     const [state, dispatch] = useReducer(reducer, worker);
+    const { 
+        cost,
+        owned, 
+        speed,
+        productionRateUpgradeCost: prUpgradeCost, 
+        productionRate
+    } = state
+    
     const [money, setMoney] = useMoney();
     
     const [affordable, setAffordable] = useState(false)
     useEffect(() => {
-        if (worker.cost <= money) setAffordable(true); 
+        cost <= money && setAffordable(true); 
     }, [money])
 
     const BuyWorker = useCallback(event => {
         event.stopPropagation()
-        const totalCost = state.cost * multiplier;
+        const totalCost = cost * multiplier;
         if (money < totalCost) return;
         setMoney(prevMoney => prevMoney - totalCost);
         dispatch(buy(multiplier))
@@ -22,26 +31,17 @@ export default function useWorker(worker, multiplier) {
     
     const UpgradeWorker = useCallback(event => {
         event.stopPropagation()
-        if (money < state.productionRateUpgradeCost) return;
-        setMoney(prevMoney => prevMoney - state.productionRateUpgradeCost);
+        if (money < prUpgradeCost) return;
+        setMoney(prevMoney => prevMoney - prUpgradeCost);
         dispatch(upgrade())
     }, [state, money])
 
-    const [miningTrigger, setMiningTrigger] = useState(0);
-
-    useEffect(() => {
-        setInterval(() => {
-            setMiningTrigger(prevMining => prevMining + 1)
-        }, state.speed)
-    }, [])
-    const [progress, resetProgress] = useProgress(state.speed);
-
-    useEffect(() => {
-        setMoney(prevMoney => prevMoney + state.owned * state.productionRate);
+    const [progress, resetProgress] = useProgress(speed);
+    
+    useTimer(speed, () => {
+        setMoney(prevMoney => prevMoney + owned * productionRate);
         resetProgress();
-    }, [miningTrigger]);
-
-
+    })
     
     return [state, progress, affordable, BuyWorker, UpgradeWorker];
 }

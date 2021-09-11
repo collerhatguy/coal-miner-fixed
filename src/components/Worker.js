@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { useMultiplier } from '../hooks/useContext';
-import useWorker from "../hooks/useWorker";
-import PropTypes from "prop-types";
+import React, { useState } from 'react'
+import { useMultiplier } from '../hooks/useContext'
+import useWorker from "../hooks/useWorker"
+import useToggle from '../hooks/useToggle'
+import PropTypes from "prop-types"
 
 
 export default function Worker(props) {
@@ -11,13 +12,13 @@ export default function Worker(props) {
     
     const { owned, name, cost, level, productionRate, productionRateUpgradeCost, img } = workerState;
     
-    const [visible, setVisible] = useState(true);
+    const [visible, toggleVisible] = useToggle(true);
 
     if (!affordable) return null;
     return (
         <div 
             className="worker"
-            onClick={() => setVisible(!visible)}
+            onClick={toggleVisible}
             data-cy="visibility-btn">
             <h3 className="worker-name">{name}</h3>
             {visible && <div data-cy="visibility-pnl" className="visible">
@@ -30,7 +31,9 @@ export default function Worker(props) {
                     onClick={UpgradeWorker}
                 >Upgrade for <span>{productionRateUpgradeCost}</span>$?</button>
                 <img className="worker-image" 
-                    src={img} />
+                    src={img} 
+                    alt="woker img"
+                />
                 <h4>Owned: <span data-cy="owned">{owned}</span></h4>
                 <h4>Production Rate: <span>{productionRate}</span>$</h4>
                 <h4>Level: <span>{level}</span></h4>
