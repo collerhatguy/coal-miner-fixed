@@ -41,15 +41,20 @@ export default function Worker(props) {
                 <button 
                     data-cy="buy" 
                     onClick={BuyWorker}
-                >Buy 
-                    <span>
-                        {multiplier}
-                    </span> 
-                    for 
-                    <span>
-                        {cost * multiplier}
-                    </span>
-                    $?
+                >
+                    {owned === 0 ? <span>Click Here!</span> :
+                        <div>
+                            Buy 
+                            <span>
+                                {multiplier}
+                            </span> 
+                            for 
+                            <span>
+                                {cost * multiplier}
+                            </span>
+                            $?
+                        </div> 
+                    }
                 </button>
                 {upgradeAffordable &&
                     <button onClick={UpgradeWorker}>
@@ -76,7 +81,8 @@ export default function Worker(props) {
                     src={img} 
                     alt="woker img"
                 />
-            </div>}
+            </div>
+            }
         </div>
     )
 }

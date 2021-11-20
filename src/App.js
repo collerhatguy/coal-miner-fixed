@@ -7,7 +7,7 @@ import WorkerList from "./components/WorkerList";
 import MultiplierList from "./components/MultiplierList";
 
 function App() {
-  const [money, setMoney] = useState(1000);
+  const [money, setMoney] = useState(10);
   const [multiplier, setMultiplier] = useState(1);
   const [showMultipliers, toggleShowMultipliers] = useToggle(false);
 

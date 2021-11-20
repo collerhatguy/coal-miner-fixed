@@ -20,6 +20,7 @@ export default function useWorker(worker, multiplier) {
     const [upgradeAffordable, setUgAffordable] = useState(false)
 
     useEffect(() => {
+        if (affordable && upgradeAffordable) return;
         if (cost <= money) setAffordable(true); 
         if (prUpgradeCost <= money) setUgAffordable(true); 
     }, [money])
