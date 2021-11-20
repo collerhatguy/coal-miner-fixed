@@ -12,7 +12,7 @@ export default function Worker(props) {
     
     const { owned, name, cost, level, productionRate, productionRateUpgradeCost, img } = workerState
     
-    const [visible, toggleVisible] = useToggle(true)
+    const [visible, toggleVisible] = useToggle(false)
 
     if (!affordable) return null
     return (

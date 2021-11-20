@@ -106,17 +106,14 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: 4rem;
 }
 
 h2 {
-  font-size: 4rem;
-  background-color: #665c00;
-  color: #fff599;
+  font-size: 5rem;
   width: -webkit-min-content;
   width: -moz-min-content;
   width: min-content;
-  padding: 0 1rem;
 }
 
 @media (max-width: 600px) {
