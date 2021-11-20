@@ -200,6 +200,7 @@ fieldset {
 
 .worker-list span {
   color: #ccb800;
+  padding: 0 1rem;
 }
 
 progress {

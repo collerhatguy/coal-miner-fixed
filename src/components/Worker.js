@@ -18,19 +18,26 @@ export default function Worker(props) {
     return (
         <div 
             className="worker"
-            onClick={toggleVisible}
             data-cy="visibility-btn">
-            <h3 className="worker-name">
-                {name}
+            <h3 
+                onClick={toggleVisible}
+                className="worker-name"
+            >
+                {name} 
+                <span data-cy="owned">
+                    {owned}
+                </span>
             </h3>
             {visible && <div 
                 data-cy="visibility-pnl" 
                 className="detail-container">
-                <progress 
-                    data-cy="progress" 
-                    max={100} 
-                    value={owned ? progress : 0} 
-                />
+                {owned !== 0 &&
+                    <progress 
+                        data-cy="progress" 
+                        max={100} 
+                        value={progress} 
+                    />
+                }
                 <button 
                     data-cy="buy" 
                     onClick={BuyWorker}
@@ -51,16 +58,6 @@ export default function Worker(props) {
                     </span>
                     $?
                 </button>
-                <img 
-                    className="worker-image" 
-                    src={img} 
-                    alt="woker img"
-                />
-                <h4>Owned: 
-                    <span data-cy="owned">
-                        {owned}
-                    </span>
-                </h4>
                 <h4>Production Rate: 
                     <span>
                         {productionRate}
@@ -72,6 +69,11 @@ export default function Worker(props) {
                         {level}
                     </span>
                 </h4>
+                <img 
+                    className="worker-image" 
+                    src={img} 
+                    alt="woker img"
+                />
             </div>}
         </div>
     )
