@@ -22,6 +22,22 @@
     align-items: center;
     flex-direction: column;
 }
+@mixin button($color1, $color2) {
+    cursor: pointer;
+    font-size: $base-font * 3;
+    background-color: $color1;
+    color: $color2;
+    border: $color2 solid .1rem;
+    transition-duration: 300ms;
+    min-width: min-content;
+    &:focus, &:hover {
+        outline: none;
+        background-color: $color2;
+        color: $color1;
+    }
+}
+
+
 // 3.5: general stuff 
 body, main {
     @include flex-column();

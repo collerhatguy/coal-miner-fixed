@@ -184,12 +184,12 @@ fieldset {
   border: #665c00 solid 0.1rem;
   -webkit-transition-duration: 300ms;
           transition-duration: 300ms;
-  padding: 1rem;
-  margin: .5rem;
-  width: 70%;
   min-width: -webkit-min-content;
   min-width: -moz-min-content;
   min-width: min-content;
+  padding: 1rem;
+  margin: .5rem;
+  width: 70%;
 }
 
 .worker-list button:focus, .worker-list button:hover {
@@ -232,7 +232,6 @@ progress::-webkit-progress-value {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  cursor: pointer;
   border: solid 5px #ffeb33;
   text-align: center;
   font-size: 3rem;
@@ -242,8 +241,22 @@ progress::-webkit-progress-value {
 
 .worker-name {
   width: 100%;
+  cursor: pointer;
+  font-size: 3rem;
   background-color: #665c00;
   color: #fff599;
+  border: #fff599 solid 0.1rem;
+  -webkit-transition-duration: 300ms;
+          transition-duration: 300ms;
+  min-width: -webkit-min-content;
+  min-width: -moz-min-content;
+  min-width: min-content;
+}
+
+.worker-name:focus, .worker-name:hover {
+  outline: none;
+  background-color: #fff599;
+  color: #665c00;
 }
 
 .worker-image {

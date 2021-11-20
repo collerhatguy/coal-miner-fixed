@@ -8,22 +8,10 @@
     h3 {padding: .5rem 2rem;}
 
     button {
-        cursor: pointer;
-        font-size: $base-font * 3;
-        background-color: $tertiary-color-100;
-        color: $tertiary-color-400;
-        border: $tertiary-color-400 solid .1rem;
-        transition-duration: 300ms;
+        @include button($tertiary-color-100, $tertiary-color-400);
         padding: 1rem;
         margin: .5rem;
         width: 70%;
-        min-width: min-content;
-        &:focus, &:hover {
-            outline: none;
-            background-color: $tertiary-color-400;
-            color: $tertiary-color-100;
-        }
-
     }
     span {
         color: $tertiary-color-300;
@@ -47,7 +35,6 @@ progress {
 
 .worker {
     @include flex-column();
-    cursor: pointer;
     border: solid 5px $tertiary-color-200;
     text-align: center;
     font-size: $base-font * 3;
@@ -56,8 +43,7 @@ progress {
 }
 .worker-name {
     width: 100%;
-    background-color: $tertiary-color-400;
-    color: $tertiary-color-100;
+    @include button($tertiary-color-400, $tertiary-color-100);
 }
 .worker-image {
     width: 300px;
