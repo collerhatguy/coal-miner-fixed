@@ -8,7 +8,7 @@ import PropTypes from "prop-types"
 export default function Worker(props) {
     const { worker } = props
     const multiplier = useMultiplier()
-    const [workerState, progress, affordable, BuyWorker, UpgradeWorker] = useWorker(worker, multiplier)
+    const [workerState, progress, affordable, upgradeAffordable, BuyWorker, UpgradeWorker] = useWorker(worker, multiplier)
     
     const { owned, name, cost, level, productionRate, productionRateUpgradeCost, img } = workerState
     
@@ -51,13 +51,15 @@ export default function Worker(props) {
                     </span>
                     $?
                 </button>
-                <button onClick={UpgradeWorker}>
-                    Upgrade for 
-                    <span>
-                        {productionRateUpgradeCost}
-                    </span>
-                    $?
-                </button>
+                {upgradeAffordable &&
+                    <button onClick={UpgradeWorker}>
+                        Upgrade for 
+                        <span>
+                            {productionRateUpgradeCost}
+                        </span>
+                        $?
+                    </button>
+                }
                 <h4>Production Rate: 
                     <span>
                         {productionRate}

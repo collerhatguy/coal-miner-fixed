@@ -17,8 +17,11 @@ export default function useWorker(worker, multiplier) {
     const [money, setMoney] = useMoney();
     
     const [affordable, setAffordable] = useState(false)
+    const [upgradeAffordable, setUgAffordable] = useState(false)
+
     useEffect(() => {
-        cost <= money && setAffordable(true); 
+        if (cost <= money) setAffordable(true); 
+        if (prUpgradeCost <= money) setUgAffordable(true); 
     }, [money])
 
     const BuyWorker = useCallback(event => {
@@ -43,5 +46,5 @@ export default function useWorker(worker, multiplier) {
         resetProgress();
     })
     
-    return [state, progress, affordable, BuyWorker, UpgradeWorker];
+    return [state, progress, affordable, upgradeAffordable, BuyWorker, UpgradeWorker];
 }
