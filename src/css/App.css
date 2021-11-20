@@ -111,6 +111,12 @@ h1 {
 
 h2 {
   font-size: 4rem;
+  background-color: #665c00;
+  color: #fff599;
+  width: -webkit-min-content;
+  width: -moz-min-content;
+  width: min-content;
+  padding: 0 1rem;
 }
 
 @media (max-width: 600px) {

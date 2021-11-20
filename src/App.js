@@ -14,9 +14,9 @@ function App() {
         <header>
           <div className="text-container">
             <h1>Gold Miners</h1>
-            <h2>Current Money: 
+            <h2>
               <span data-cy="money">
-                {money}
+                {money}$
               </span>
             </h2>
           </div>
